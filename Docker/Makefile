@@ -66,3 +66,15 @@ $(addsuffix .run,$(ALL_IMAGES)):
 .PHONY: $(addsuffix .run,$(ALL_IMAGES))
 
 
+#
+# pull implicit rule
+#
+.SECONDEXPANSION:
+$(addsuffix .pull,$(ALL_IMAGES)):
+	$(eval REPO := buildenv-$(basename $@))
+	$(eval TAG := latest)
+	$(DOCKER) pull $(ORG)/$(REPO):$(TAG)
+
+pull: $(addsuffix .pull,$(ALL_IMAGES))
+
+.PHONY: pull $(addsuffix .pull,$(ALL_IMAGES))
