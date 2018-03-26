@@ -31,13 +31,9 @@ RUN \
   #
   cd /usr/src && \
   rm -f get-and-build-openssl-for-slicer.sh && \
-  curl -LO https://gist.githubusercontent.com/jcfr/9513568/raw/21f4e4cabca5ad03435ecc17ab546dab5e2c1a2f/get-and-build-openssl-for-slicer.sh  && \
+  curl -LO https://gist.githubusercontent.com/jcfr/9513568/raw/4a458588f68caeca18abc2c399666f928ee44f09/get-and-build-openssl-for-slicer.sh  && \
   chmod u+x get-and-build-openssl-for-slicer.sh  && \
   ./get-and-build-openssl-for-slicer.sh && \
-  rm -rf zlib && \
-  rm -rf zlib-build && \
-  rm -rf zlib-install\doc && \
-  rm -f openssl-1.0.1e.tar.gz && \
   rm -f get-and-build-openssl-for-slicer.sh && \
   #
   # Download Qt sources
@@ -65,7 +61,7 @@ RUN \
                      -no-qt3support \
                      -webkit \
                      -nomake examples -nomake demos \
-                     -openssl -I /usr/src/openssl-1.0.1e/include   -L /usr/src/openssl-1.0.1e \
+                     -openssl -I /usr/src/openssl-1.0.1h/include   -L /usr/src/openssl-1.0.1h/lib \
   && \
   make -j7 && \
   make install && \
