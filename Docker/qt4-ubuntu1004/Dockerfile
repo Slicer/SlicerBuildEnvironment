@@ -7,10 +7,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN \
   apt-get update && \
+  #
+  # Qt dependencies: https://doc.qt.io/archives/qt-4.8/requirements-x11.html
+  #
   apt-get install -y \
-    #
-    # Qt dependencies: https://doc.qt.io/archives/qt-4.8/requirements-x11.html
-    #
     libfontconfig-dev \
     libfreetype6-dev \
     libgl1-mesa-dev \
