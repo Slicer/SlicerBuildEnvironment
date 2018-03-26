@@ -8,7 +8,7 @@ DOCKER = docker
 # DockerHub organization to pull/push the images from/to
 ORG = slicer
 
-IMAGES = ubuntu1004-qt4
+IMAGES = qt4-ubuntu1004
 
 # These images are built using the "build implicit rule"
 ALL_IMAGES = $(IMAGES)
@@ -38,10 +38,9 @@ $(VERBOSE).SILENT: display_images
 #
 # build implicit rule
 #
-
 $(ALL_IMAGES): %: %/Dockerfile
-	$(eval REPO := buildenv)
-	$(eval TAG := $@)
+	$(eval REPO := buildenv-$@)
+	$(eval TAG := latest)
 	$(eval IMAGEID := $(shell $(DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
 	$(DOCKER) build -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
@@ -60,8 +59,8 @@ $(ALL_IMAGES): %: %/Dockerfile
 #
 .SECONDEXPANSION:
 $(addsuffix .run,$(ALL_IMAGES)):
-	$(eval REPO := buildenv)
-	$(eval TAG := $(basename $@))
+	$(eval REPO := buildenv-$(basename $@))
+	$(eval TAG := latest)
 	$(DOCKER) run -ti --rm $(ORG)/$(REPO):$(TAG) bash
 
 .PHONY: $(addsuffix .run,$(ALL_IMAGES))

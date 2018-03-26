@@ -1,6 +1,7 @@
 FROM dockbuild/ubuntu1004:latest
 
-ENV DEFAULT_DOCKCROSS_IMAGE=slicer/buildenv:ubuntu1004-qt4
+ARG IMAGE
+ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -81,7 +82,6 @@ RUN \
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
-ARG IMAGE
 ARG VCS_REF
 ARG VCS_URL
 LABEL org.label-schema.build-date=$BUILD_DATE \
