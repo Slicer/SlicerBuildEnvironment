@@ -24,6 +24,7 @@ endif
 # images: This target builds all IMAGES (because it is the first one, it is built by default)
 #
 images: $(IMAGES)
+.PHONY: images
 
 #
 # display
@@ -32,6 +33,7 @@ display_images:
 	for image in $(ALL_IMAGES); do echo $$image; done
 
 $(VERBOSE).SILENT: display_images
+.PHONY: display_images
 
 #
 # build implicit rule
@@ -50,6 +52,9 @@ $(ALL_IMAGES): %: %/Dockerfile
 	CURRENT_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO)) && \
 	if [ -n "$(IMAGEID)" ] && [ "$(IMAGEID)" != "$$CURRENT_IMAGEID" ]; then $(DOCKER) rmi "$(IMAGEID)"; fi
 
+.PHONY: $(ALL_IMAGES)
+
+
 #
 # run implicit rule
 #
@@ -59,5 +64,6 @@ $(addsuffix .run,$(ALL_IMAGES)):
 	$(eval TAG := $(basename $@))
 	$(DOCKER) run -ti --rm $(ORG)/$(REPO):$(TAG) bash
 
+.PHONY: $(addsuffix .run,$(ALL_IMAGES))
 
-.PHONY: images display_images $(ALL_IMAGES) $(addsuffix .run,$(ALL_IMAGES))
+
