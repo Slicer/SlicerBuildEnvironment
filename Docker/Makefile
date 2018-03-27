@@ -8,7 +8,7 @@ DOCKER = docker
 # DockerHub organization to pull/push the images from/to
 ORG = slicer
 
-IMAGES = qt4-ubuntu1004
+IMAGES = qt4-centos5 qt4-ubuntu1004
 
 # These images are built using the "build implicit rule"
 ALL_IMAGES = $(IMAGES)
