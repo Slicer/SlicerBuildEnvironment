@@ -71,8 +71,7 @@ RUN \
   #
   # cleanup
   #
-  rm -rf /var/lib/apt/lists/* && \
-  mkdir /var/lib/apt/lists/partial
+  yum clean all
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
