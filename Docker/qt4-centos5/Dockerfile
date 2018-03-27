@@ -20,6 +20,7 @@ RUN \
     mesa-libOSMesa-devel \
     mesa-libGL-devel \
     mesa-libGLU-devel \
+    subversion \
   && \
   #
   # This will download, then build zlib and openssl in the current folder
