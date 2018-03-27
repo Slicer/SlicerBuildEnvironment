@@ -31,9 +31,8 @@ RUN \
   # This will download, then build zlib and openssl in the current folder
   #
   cd /usr/src && \
-  rm -f get-and-build-openssl-for-slicer.sh && \
-  curl -LO https://gist.githubusercontent.com/jcfr/9513568/raw/4a458588f68caeca18abc2c399666f928ee44f09/get-and-build-openssl-for-slicer.sh  && \
-  chmod u+x get-and-build-openssl-for-slicer.sh  && \
+  curl -LO https://gist.githubusercontent.com/jcfr/9513568/raw/4a458588f68caeca18abc2c399666f928ee44f09/get-and-build-openssl-for-slicer.sh && \
+  chmod u+x get-and-build-openssl-for-slicer.sh && \
   ./get-and-build-openssl-for-slicer.sh && \
   rm -f get-and-build-openssl-for-slicer.sh && \
   #

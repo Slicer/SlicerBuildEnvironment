@@ -63,7 +63,7 @@ $(addsuffix .run,$(ALL_IMAGES)):
 	$(eval TAG := latest)
 	$(DOCKER) run -ti --rm $(ORG)/$(REPO):$(TAG) bash
 
-.PHONY: $(addsuffix .run,$(ALL_IMAGES))
+.PHONY: %.run
 
 
 #
@@ -75,6 +75,6 @@ $(addsuffix .pull,$(ALL_IMAGES)):
 	$(eval TAG := latest)
 	$(DOCKER) pull $(ORG)/$(REPO):$(TAG)
 
-pull: $(addsuffix .pull,$(ALL_IMAGES))
+pull: %.pull
 
-.PHONY: pull $(addsuffix .pull,$(ALL_IMAGES))
+.PHONY: pull %.pull
