@@ -1,7 +1,9 @@
 FROM dockbuild/ubuntu1004:latest
 
 ARG IMAGE
-ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
+ARG QT_INSTALL_DIR=/usr/src/qt-install
+ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE} \
+    PATH=${QT_INSTALL_DIR}/bin:${PATH}
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -52,7 +54,6 @@ RUN \
   # Build Qt
   #
   cd /usr/src && \
-  QT_INSTALL_DIR=/usr/src/qt-everywhere-opensource-release-build-4.8.6 && \
   mkdir ${QT_INSTALL_DIR} && \
   cd ${QT_SRC_DIR} && \
   ./configure -prefix ${QT_INSTALL_DIR} \
