@@ -1,4 +1,4 @@
-FROM dockbuild/centos6:latest
+FROM dockbuild/centos7:latest
 
 ARG IMAGE
 ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
@@ -27,7 +27,7 @@ RUN \
     mesa-libGL-devel \
     mesa-libGLU-devel
 
-ENV PATH=/opt/qt/5.10.0/gcc_64/:${PATH}
+ENV PATH=/opt/qt/5.10.1/gcc_64/:${PATH}
 ADD qt-installer-noninteractive.qs /usr/src/qt-installer-noninteractive.qs
 
 RUN \
