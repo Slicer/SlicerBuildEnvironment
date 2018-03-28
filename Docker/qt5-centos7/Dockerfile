@@ -43,7 +43,7 @@ RUN \
   #
   # Cleanup unneeded Qt directories and files
   #
-  find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" && \
+  find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
   rm -rf \
     /opt/qt/dist \
     /opt/qt/Docs \
