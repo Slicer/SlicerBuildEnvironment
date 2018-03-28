@@ -63,7 +63,7 @@ $(addsuffix .run,$(ALL_IMAGES)):
 	$(eval TAG := latest)
 	$(DOCKER) run -ti --rm $(ORG)/$(REPO):$(TAG) bash
 
-.PHONY: %.run
+.PHONY: $(addsuffix .run,$(ALL_IMAGES))
 
 
 #
@@ -75,8 +75,8 @@ $(addsuffix .pull,$(ALL_IMAGES)):
 	$(eval TAG := latest)
 	$(DOCKER) pull $(ORG)/$(REPO):$(TAG)
 
-pull: %.pull
-.PHONY: pull %.pull
+pull: $(addsuffix .pull,$(ALL_IMAGES))
+.PHONY: pull $(addsuffix .pull,$(ALL_IMAGES))
 
 #
 # push implicit rule
@@ -87,5 +87,6 @@ $(addsuffix .push,$(ALL_IMAGES)):
 	$(eval TAG := latest)
 	$(DOCKER) push $(ORG)/$(REPO):$(TAG)
 
-push: %.push
-.PHONY: push %.push
+push: $(addsuffix .push,$(ALL_IMAGES))
+
+.PHONY: push $(addsuffix .push,$(ALL_IMAGES))
