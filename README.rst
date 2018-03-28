@@ -18,8 +18,15 @@ slicer/buildenv-qt4-centos5:latest
   |buildenv-qt4-centos5-latest| Build environment based on Centos5 and including Qt 4.8.7
 
 
+.. |buildenv-qt5-centos7-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:latest.svg
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
+
+slicer/buildenv-qt5-centos7:latest
+  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.10.1
+
+
 Visual Overview
 ---------------
 
-.. image:: http://interactive.blockdiag.com/image?compression=deflate&encoding=base64&src=eJyFkkFLxDAQhe_7K4Z4tVBhRaHUw-7Bi_9ARJImW4MhWdOJUGX_u0lard022WPfY96XNx2mTPPOJW3hewNgrBQaKUqjoYajsWipxMo7XByoU_h6MBo7-SW8fV9tvNH4AdPdPnfYq6Bygyj4S5hxzGl0N2W5Xboh0pOZk4oXvxmKMqFqMn6Sazgbm3BQPMBKQqB2SjbCFlEX-rP4wO05YM3ztMYoY2tyVe7u9rs9iR0WiEDOIObF_m1gRE_Kar3JDpy1oFTFJSphXyw6f0OeFeq21rhjPB-AiPaNiJLMUtuTKsoD8Em2b_hoaT-K4z-DeblTMvPvibnU5U0k15gmDaVzmMwJVBd2NqBPP5JiIAY
-  :target: http://interactive.blockdiag.com/?compression=deflate&src=eJyFkkFLxDAQhe_7K4Z4tVBhRaHUw-7Bi_9ARJImW4MhWdOJUGX_u0lard022WPfY96XNx2mTPPOJW3hewNgrBQaKUqjoYajsWipxMo7XByoU_h6MBo7-SW8fV9tvNH4AdPdPnfYq6Bygyj4S5hxzGl0N2W5Xboh0pOZk4oXvxmKMqFqMn6Sazgbm3BQPMBKQqB2SjbCFlEX-rP4wO05YM3ztMYoY2tyVe7u9rs9iR0WiEDOIObF_m1gRE_Kar3JDpy1oFTFJSphXyw6f0OeFeq21rhjPB-AiPaNiJLMUtuTKsoD8Em2b_hoaT-K4z-DeblTMvPvibnU5U0k15gmDaVzmMwJVBd2NqBPP5JiIAY
+.. image:: http://interactive.blockdiag.com/image?compression=deflate&encoding=base64&src=eJyFU8tOxCAU3c9XENzaZExmUhNSFzMLN_6BMQYKU4mkjPRiUs38u9BB21KoS-7pedxHmdL1O5e0Qd8bhLSRogUKUreoQmdtwFAJxCFcnKhV8HrSLXTySzj4nmwcUDuC7vbPHfTKV7kGEPzFcyyzLdi77Xa3RL0kK37JijKhKhye-BZF348-qHhAU6r3YVYqLtrP4gN2sWQKc_q1VtpU-GZ7KI-HIx7ijqLeJEUMqSd9BZexksw-wl55prDIvxTPwPku5nYZ-mwD5XwD5coGytBCeEX597FgCvtv_mUU-4_oMzdG2_NwrAgNHi4jVpIZanpMhvJV_Ek2b_BoaB-K4V4myyCTHi5Zbe5-kCHMmvrkIKP9RrPK-3RK1sKsmaROkuT2S5ITvEa4_ACrlEJU
+  :target: http://interactive.blockdiag.com/?compression=deflate&src=eJyFU8tOxCAU3c9XENzaZExmUhNSFzMLN_6BMQYKU4mkjPRiUs38u9BB21KoS-7pedxHmdL1O5e0Qd8bhLSRogUKUreoQmdtwFAJxCFcnKhV8HrSLXTySzj4nmwcUDuC7vbPHfTKV7kGEPzFcyyzLdi77Xa3RL0kK37JijKhKhye-BZF348-qHhAU6r3YVYqLtrP4gN2sWQKc_q1VtpU-GZ7KI-HIx7ijqLeJEUMqSd9BZexksw-wl55prDIvxTPwPku5nYZ-mwD5XwD5coGytBCeEX597FgCvtv_mUU-4_oMzdG2_NwrAgNHi4jVpIZanpMhvJV_Ek2b_BoaB-K4V4myyCTHi5Zbe5-kCHMmvrkIKP9RrPK-3RK1sKsmaROkuT2S5ITvEa4_ACrlEJU
