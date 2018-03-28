@@ -56,9 +56,14 @@ RUN \
   yum clean all
 
 #
-# Allows CMake to find Qt5
+# (1) Add Qt root directory to the PATH. This allows CMake command
+#     'find_package(Qt5 REQUIRED)` to succeed.
 #
-ENV PATH=/opt/qt/5.10.1/gcc_64/:${PATH}
+# (2) Set env. variable Qt5_DIR to support configuring project
+#     by explicitly passing -DQt5_DIR:PATH=${Qt5_DIR}
+#
+ENV PATH=/opt/qt/5.10.1/gcc_64/:${PATH} \
+    Qt5_DIR=/opt/qt/5.10.1/gcc_64/lib/cmake/Qt5
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
