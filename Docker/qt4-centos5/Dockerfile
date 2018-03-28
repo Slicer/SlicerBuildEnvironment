@@ -1,4 +1,4 @@
-FROM dockbuild/centos5:latest
+FROM dockbuild/centos5-devtoolset2-gcc4:latest
 
 ARG IMAGE
 ARG QT_INSTALL_DIR=/usr/src/qt-install

@@ -1,4 +1,4 @@
-FROM dockbuild/ubuntu1004:latest
+FROM dockbuild/ubuntu1004-gcc4:latest
 
 ARG IMAGE
 ARG QT_INSTALL_DIR=/usr/src/qt-install
