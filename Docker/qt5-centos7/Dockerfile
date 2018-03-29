@@ -14,29 +14,50 @@ RUN \
   # * https://doc.qt.io/qt-5/linux-requirements.html
   # * https://doc.qt.io/qt-5/supported-platforms-and-configurations.html#qt-5-10
   #
+  # IMPORTANT:
+  #
+  # * dependencies of Qt5MultimediaGstTools are not installed. These are
+  #   "gstreamer1-plugins-good" and "gstreamer1-plugins-base" along with
+  #   all video and image codecs.
+  #
   yum install -y \
     fontconfig \
     freetype \
     glib2 \
+    libICE \
     libX11 \
     libxcb \
-    libXi \
     libXext \
+    libXi \
     libXrender \
     libSM \
-    libICE \
-    xcb-util-keysyms \
-    xcb-util-image \
+    libXt-devel \
     libGLU-devel \
     mesa-libOSMesa-devel \
     mesa-libGL-devel \
     mesa-libGLU-devel \
+    xcb-util-keysyms \
+    xcb-util-image \
   && \
   #
-  # VTK dependencies
+  # libQt5WebEngineCore
+  # * alsa-lib provides libasound.so.2
+  yum install -y \
+    alsa-lib \
+    libXcomposite \
+    libXcursor \
+    libXrandr \
+    libXtst \
+    mesa-libEGL \
+  && \
+  #
+  # libQt5Multimedia
+  # * pulseaudio-libs-glib2 provides libpulse-mainloop-glib.so.0
+  # * pulseaudio-libs provides libpulse.so.0
   #
   yum install -y \
-    libXt-devel \
+    pulseaudio-libs \
+    pulseaudio-libs-glib2 \
   && \
   #
   # Slicer dependencies
