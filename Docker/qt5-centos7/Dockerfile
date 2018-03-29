@@ -31,6 +31,17 @@ RUN \
     mesa-libOSMesa-devel \
     mesa-libGL-devel \
     mesa-libGLU-devel \
+  && \
+  #
+  # VTK dependencies
+  #
+  yum install -y \
+    libXt-devel \
+  && \
+  #
+  # Slicer dependencies
+  #
+  yum install -y \
     subversion \
   && \
   #

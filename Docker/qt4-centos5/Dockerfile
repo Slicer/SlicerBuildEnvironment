@@ -22,6 +22,11 @@ RUN \
     mesa-libOSMesa-devel \
     mesa-libGL-devel \
     mesa-libGLU-devel \
+  && \
+  #
+  # Slicer dependencies
+  #
+  yum install -y \
     subversion \
   && \
   #
