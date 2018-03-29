@@ -31,6 +31,7 @@ RUN \
     mesa-libOSMesa-devel \
     mesa-libGL-devel \
     mesa-libGLU-devel \
+    subversion \
   && \
   #
   # Download and install Qt
