@@ -14,11 +14,11 @@ RUN \
   #
   yum install -y \
     fontconfig-devel \
+    libGLU-devel \
     libX11-devel \
-    libXt-devel \
     libXext-devel \
     libXrender-devel \
-    libGLU-devel \
+    libXt-devel \
     mesa-libOSMesa-devel \
     mesa-libGL-devel \
     mesa-libGLU-devel \
