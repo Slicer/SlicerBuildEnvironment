@@ -88,6 +88,14 @@ RUN \
   #
   yum clean all
 
+# XXX Install https://github.com/dockbuild/ninja-jobserver
+#     If it works well, it will be added to the base image.
+RUN \
+  curl -LO https://github.com/dockbuild/ninja-jobserver/releases/download/v1.8.2-jobserver/ninja-jobserver-linux.zip && \
+  unzip ninja-jobserver-linux.zip && \
+  mv ninja /usr/local/bin/ninja && \
+  rm -f ninja-jobserver-linux.zip
+
 #
 # (1) Add Qt root directory to the PATH. This allows CMake command
 #     'find_package(Qt5 REQUIRED)` to succeed.
