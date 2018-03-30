@@ -127,6 +127,7 @@ Configure, build and package a Slicer extension for Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following steps will:
+
 * download an extension source code
 * configure, build and package the extension using the build generated in the **previous tutorial**
 
