@@ -21,6 +21,7 @@ RUN \
   #   all video and image codecs.
   #
   yum install -y \
+    flex \
     fontconfig \
     freetype \
     glib2 \
