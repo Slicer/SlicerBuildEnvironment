@@ -83,6 +83,23 @@ providing cross-compiling environment. It even re-use the same tests and entrypo
 Tutorials
 ---------
 
+How to locally build the docker images ?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To build all images:
+
+```
+cd Docker
+make
+```
+
+To build a specific image:
+
+```
+cd Docker
+make qt5-centos7
+```
+
 Configure, build and package Slicer for Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
