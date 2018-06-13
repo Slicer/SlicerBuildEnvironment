@@ -75,9 +75,11 @@ RUN \
   ./qt-unified-linux-x64-online.run --verbose --platform minimal --script ./qt-installer-noninteractive.qs && \
   rm -f qt-installer-noninteractive.qs qt-unified-linux-x64-online.run && \
   #
-  # Cleanup unneeded Qt directories and files
+  # Cleanup
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
+  find /opt/qt -type f -name "*.debug" -delete && \
+  find /opt/qt/5.11.0/gcc_64/bin -type f -executable -exec strip {} \; && \
   rm -rf \
     /opt/qt/dist \
     /opt/qt/Docs \
@@ -88,14 +90,6 @@ RUN \
   # Cleanup
   #
   yum clean all
-
-# XXX Install https://github.com/dockbuild/ninja-jobserver
-#     If it works well, it will be added to the base image.
-RUN \
-  curl -LO https://github.com/dockbuild/ninja-jobserver/releases/download/v1.8.2-jobserver/ninja-jobserver-linux.zip && \
-  unzip ninja-jobserver-linux.zip && \
-  mv ninja /usr/local/bin/ninja && \
-  rm -f ninja-jobserver-linux.zip
 
 #
 # (1) Add Qt root directory to the PATH. This allows CMake command
