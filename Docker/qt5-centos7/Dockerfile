@@ -12,7 +12,7 @@ RUN \
   # Qt dependencies:
   #
   # * https://doc.qt.io/qt-5/linux-requirements.html
-  # * https://doc.qt.io/qt-5/supported-platforms-and-configurations.html#qt-5-10
+  # * https://doc.qt.io/qt-5/supported-platforms-and-configurations.html#qt-5-11
   #
   # IMPORTANT:
   #
@@ -104,8 +104,8 @@ RUN \
 # (2) Set env. variable Qt5_DIR to support configuring project
 #     by explicitly passing -DQt5_DIR:PATH=${Qt5_DIR}
 #
-ENV PATH=/opt/qt/5.10.1/gcc_64/:${PATH} \
-    Qt5_DIR=/opt/qt/5.10.1/gcc_64/lib/cmake/Qt5
+ENV PATH=/opt/qt/5.11.0/gcc_64/:${PATH} \
+    Qt5_DIR=/opt/qt/5.11.0/gcc_64/lib/cmake/Qt5
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
