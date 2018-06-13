@@ -75,9 +75,11 @@ RUN \
   ./qt-unified-linux-x64-online.run --verbose --platform minimal --script ./qt-installer-noninteractive.qs && \
   rm -f qt-installer-noninteractive.qs qt-unified-linux-x64-online.run && \
   #
-  # Cleanup unneeded Qt directories and files
+  # Cleanup
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
+  find /opt/qt -type f -name "*.debug" -delete && \
+  find /opt/qt/5.11.0/gcc_64/bin -type f -executable -exec strip {} \; && \
   rm -rf \
     /opt/qt/dist \
     /opt/qt/Docs \
