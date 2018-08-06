@@ -139,7 +139,7 @@ The following steps will:
   slicer-buildenv-qt4-ubuntu1004 cmake --build Slicer-build
 
   # Package Slicer
-  slicer-buildenv-qt4-ubuntu1004 cmake --build Slicer-build\Slicer-build --target package
+  slicer-buildenv-qt4-ubuntu1004 cmake --build Slicer-build/Slicer-build --target package
 
 
 Configure, build and package a Slicer extension for Linux
