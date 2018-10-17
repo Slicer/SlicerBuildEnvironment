@@ -67,6 +67,12 @@ RUN \
     subversion \
   && \
   #
+  # SlicerJupyter dependencies
+  #
+  yum install -y \
+    libuuid-devel \
+  && \
+  #
   # Download and install Qt
   #
   cd /usr/src && \
