@@ -185,3 +185,52 @@ The following steps will:
 
   # Package the extension
   slicer-buildenv-qt4-ubuntu1004 cmake --build ${EXTENSION_NAME}-build --target package
+
+
+Maintainers
+-----------
+
+Tagging a build environment image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Choose a tag (e.g ``slicer-X.Y``)
+
+::
+
+  TAG=<name-of-tag>
+
+2. Update ``Docker/Makefile`` with the chosen tag
+
+::
+
+  sed -i -E "s/^TAG = .+$/TAG = ${TAG}/g" Docker/Makefile
+
+2. Add an entry in ``README.rst`` referencing the chosen tag
+
+3. Commit the changes
+
+::
+
+  git add README.rst Docker/Makefile
+  git commit -m "Set TAG to ${TAG}"
+
+4. Build and publish an image
+
+::
+
+  cd Docker
+  make <name-of-image>
+  make <name-of-image>.push
+
+5. Update ``Docker/Makefile`` with the "latest" tag
+
+::
+
+  sed -i -E "s/^TAG = .+$/TAG = latest/g" Docker/Makefile
+
+6. Commit the changes
+
+::
+
+  git add README.rst
+  git commit -m "Set TAG to latest"
