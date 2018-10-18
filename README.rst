@@ -51,6 +51,13 @@ slicer/buildenv-qt4-centos5:latest
   |buildenv-qt4-centos5-latest| Build environment based on Centos5 and including Qt 4.8.7
 
 
+.. |buildenv-qt5-centos7-slicer-4.10.0| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.10.0.svg
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.10.0
+
+slicer/buildenv-qt5-centos7:slicer-4.10.0
+  |buildenv-qt5-centos7-slicer-4.10.0| Build environment based on Centos7 and including Qt 5.11.2
+
+
 .. |buildenv-qt5-centos7-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:latest.svg
   :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
 

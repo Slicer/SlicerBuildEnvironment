@@ -14,7 +14,7 @@ IMAGES = qt4-centos5 qt4-ubuntu1004 qt5-centos7
 ALL_IMAGES = $(IMAGES)
 
 # Tag to associated with the image
-TAG = latest
+TAG = slicer-4.10
 
 # On CircleCI, do not attempt to delete container
 # See https://circleci.com/docs/docker-btrfs-error/
