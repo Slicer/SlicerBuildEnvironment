@@ -90,6 +90,16 @@ providing cross-compiling environment. It even re-use the same tests and entrypo
 Tutorials
 ---------
 
+How to download an existing docker image ?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To download the latest version of the ``qt5-centos7`` image:
+
+::
+
+  docker pull slicer/buildenv-qt5-centos7:latest
+
+
 How to locally build the docker images ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
