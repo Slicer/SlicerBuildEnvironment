@@ -100,6 +100,31 @@ To download the latest version of the ``qt5-centos7`` image:
   docker pull slicer/buildenv-qt5-centos7:latest
 
 
+How to install a docker based environment ?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This image does not need to be run manually. Instead, there is a helper script to execute build commands on
+source code existing on the local host filesystem. This script is bundled with the image.
+
+To install the helper script, run one of the images with no arguments, and redirect the output to a file:
+
+
+::
+  env_name=ENV_NAME
+  script=~/bin/slicer-buildenv-${env_name}
+  docker run --rm slicer/buildenv-${env_name} > $script
+  chmod +x $script
+
+For example, to install the script associated with the latest ``qt5-centos7`` images:
+
+::
+
+  env_name=qt5-centos7
+  script=~/bin/slicer-buildenv-${env_name}
+  docker run --rm slicer/buildenv-${env_name} > $script
+  chmod +x $script
+
+
 How to locally build the docker images ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
