@@ -81,6 +81,17 @@ RUN \
   ./qt-unified-linux-x64-online.run --verbose --platform minimal --script ./qt-installer-noninteractive.qs && \
   rm -f qt-installer-noninteractive.qs qt-unified-linux-x64-online.run && \
   #
+  # Download and install CUDA
+  #
+  cd /usr/src && \
+  yum -y install kernel-devel && \
+  yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
+  curl -LO https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-rhel7-10-1-local-10.1.168-418.67-1.0-1.x86_64.rpm && \
+  rpm -i cuda-repo-rhel7-10-1-local-10.1.168-418.67-1.0-1.x86_64.rpm && \
+  yum clean all && \
+  yum -y install cuda && \
+  rm -f cuda-repo-rhel7-10-1-local-10.1.168-418.67-1.0-1.x86_64.rpm && \
+  #
   # Cleanup
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
