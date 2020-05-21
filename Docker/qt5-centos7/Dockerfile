@@ -3,6 +3,9 @@ FROM dockbuild/centos7-devtoolset4-gcc5:latest
 ARG IMAGE
 ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
 
+ARG QT_ACCOUNT_LOGIN
+ARG QT_ACCOUNT_PASSWORD
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 ADD qt-installer-noninteractive.qs /usr/src/qt-installer-noninteractive.qs
