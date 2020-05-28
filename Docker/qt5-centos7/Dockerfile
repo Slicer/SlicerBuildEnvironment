@@ -89,7 +89,7 @@ RUN \
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
   find /opt/qt -type f -name "*.debug" -delete && \
-  find /opt/qt/5.12.8/gcc_64/bin -type f -executable -exec strip {} \; && \
+  find /opt/qt/5.15.0/gcc_64/bin -type f -executable -exec strip {} \; && \
   rm -rf \
     /opt/qt/dist \
     /opt/qt/Docs \
@@ -108,8 +108,8 @@ RUN \
 # (2) Set env. variable Qt5_DIR to support configuring project
 #     by explicitly passing -DQt5_DIR:PATH=${Qt5_DIR}
 #
-ENV PATH=/opt/qt/5.12.8/gcc_64/:${PATH} \
-    Qt5_DIR=/opt/qt/5.12.8/gcc_64/lib/cmake/Qt5
+ENV PATH=/opt/qt/5.15.0/gcc_64/:${PATH} \
+    Qt5_DIR=/opt/qt/5.15.0/gcc_64/lib/cmake/Qt5
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
