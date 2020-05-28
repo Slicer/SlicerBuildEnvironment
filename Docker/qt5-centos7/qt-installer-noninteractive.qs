@@ -26,7 +26,18 @@ welcomepageFinished = function()
     }
 }
 
+//From : https://github.com/rabits/dockerfiles/blob/93d2d5b1d8f4c5fba9db67086a945e7462011707/5.14-desktop/extract-qt-installer.sh
 Controller.prototype.CredentialsPageCallback = function() {
+    console.log("Credentials Page");
+    var login = installer.value("QT_CI_LOGIN");
+    var password = installer.value("QT_CI_PASSWORD");
+    if( login === "" || password === "" ) {
+        console.log("No credentials provided - could stuck here forever");
+        gui.clickButton(buttons.NextButton);
+    }
+    var widget = gui.currentPageWidget();
+    widget.loginWidget.EmailLineEdit.setText(login);
+    widget.loginWidget.PasswordLineEdit.setText(password);
     gui.clickButton(buttons.NextButton);
 }
 
@@ -41,19 +52,31 @@ Controller.prototype.TargetDirectoryPageCallback = function()
 }
 
 Controller.prototype.ComponentSelectionPageCallback = function() {
+    function list_packages() {
+        var components = installer.components();
+        console.log("Available components: " + components.length);
+        var packages = ["Packages: "];
+        for (var i = 0 ; i < components.length ;i++) {
+            packages.push(components[i].name);
+        }
+        console.log(packages.join(" "));
+    }
+  
+    list_packages();
+    
     var widget = gui.currentPageWidget();
 
     widget.deselectAll();
 
     //widget.selectComponent("qt");
-    //widget.selectComponent("qt.qt5.5112");
-    widget.selectComponent("qt.qt5.5112.gcc_64");
-    widget.selectComponent("qt.qt5.5112.qtscript");
-    widget.selectComponent("qt.qt5.5112.qtscript.gcc_64");
-    widget.selectComponent("qt.qt5.5112.qtwebengine");
-    widget.selectComponent("qt.qt5.5112.qtwebengine.gcc_64");
-    //widget.selectComponent("qt.qt5.5112.qtwebglplugin");
-    //widget.selectComponent("qt.qt5.5112.qtwebglplugin.gcc_64");
+    //widget.selectComponent("qt.qt5.5128");
+    widget.selectComponent("qt.qt5.5128.gcc_64");
+    widget.selectComponent("qt.qt5.5128.qtscript");
+    widget.selectComponent("qt.qt5.5128.qtscript.gcc_64");
+    widget.selectComponent("qt.qt5.5128.qtwebengine");
+    widget.selectComponent("qt.qt5.5128.qtwebengine.gcc_64");
+    //widget.selectComponent("qt.qt5.5128.qtwebglplugin");
+    //widget.selectComponent("qt.qt5.5128.qtwebglplugin.gcc_64");
     //widget.selectComponent("qt.tools");
 
     gui.clickButton(buttons.NextButton);
@@ -79,4 +102,22 @@ Controller.prototype.FinishedPageCallback = function() {
         checkBoxForm.launchQtCreatorCheckBox.checked = false;
     }
     gui.clickButton(buttons.FinishButton);
+}
+
+Controller.prototype.ObligationsPageCallback = function() {
+    console.log("Accept obligation agreement");
+    var page = gui.pageWidgetByObjectName("ObligationsPage");
+    page.obligationsAgreement.setChecked(true);
+    page.completeChanged();
+    gui.clickButton(buttons.NextButton);
+}
+
+Controller.prototype.DynamicTelemetryPluginFormCallback = function() {
+    var page = gui.pageWidgetByObjectName("DynamicTelemetryPluginForm");
+    page.statisticGroupBox.disableStatisticRadioButton.setChecked(true);
+    gui.clickButton(buttons.NextButton);
+}
+
+Controller.prototype.PerformInstallationPageCallback = function() {
+    gui.clickButton(buttons.CommitButton);
 }

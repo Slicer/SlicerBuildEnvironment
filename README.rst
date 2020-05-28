@@ -62,7 +62,7 @@ slicer/buildenv-qt5-centos7:slicer-4.10
   :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
 
 slicer/buildenv-qt5-centos7:latest
-  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.11.2
+  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.12.8
 
 
 Visual Overview
@@ -133,6 +133,8 @@ To build all images:
 ::
 
   cd Docker
+  export QT_ACCOUNT_LOGIN=XXX
+  export QT_ACCOUNT_PASSWORD=XXX
   make
 
 
@@ -141,7 +143,17 @@ To build a specific image:
 ::
 
   cd Docker
+  export QT_ACCOUNT_LOGIN=XXX
+  export QT_ACCOUNT_PASSWORD=XXX
   make qt5-centos7
+
+
+**Important:**
+* Setting ``QT_ACCOUNT_LOGIN`` and ``QT_ACCOUNT_PASSWORD`` variables should **NOT** be done
+if the images are built using public continuous integration services. If this is needed, approach like
+what is done in [rabits/dockerfiles](https://github.com/rabits/dockerfiles/tree/93d2d5b1d8f4c5fba9db67086a945e7462011707#build-the-container-image-514) should be implemented.
+* Setting these variables is appropriate only in the case of building the docker images from
+build machines with restricted access.
 
 
 Configure, build and package Slicer for Linux

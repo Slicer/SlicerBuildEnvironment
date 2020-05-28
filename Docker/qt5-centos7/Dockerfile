@@ -3,6 +3,9 @@ FROM dockbuild/centos7-devtoolset4-gcc5:latest
 ARG IMAGE
 ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
 
+ARG QT_ACCOUNT_LOGIN
+ARG QT_ACCOUNT_PASSWORD
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 ADD qt-installer-noninteractive.qs /usr/src/qt-installer-noninteractive.qs
@@ -32,6 +35,7 @@ RUN \
     libXi \
     libXrender \
     libSM \
+    libxkbcommon-x11 \
     libXt-devel \
     libGLU-devel \
     mesa-libOSMesa-devel \
@@ -78,14 +82,14 @@ RUN \
   cd /usr/src && \
   curl -LO http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run && \
   chmod u+x qt-unified-linux-x64-online.run && \
-  ./qt-unified-linux-x64-online.run --verbose --platform minimal --script ./qt-installer-noninteractive.qs && \
+  ./qt-unified-linux-x64-online.run QT_CI_LOGIN=${QT_ACCOUNT_LOGIN} QT_CI_PASSWORD=${QT_ACCOUNT_PASSWORD} --verbose --platform minimal --script ./qt-installer-noninteractive.qs && \
   rm -f qt-installer-noninteractive.qs qt-unified-linux-x64-online.run && \
   #
   # Cleanup
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
   find /opt/qt -type f -name "*.debug" -delete && \
-  find /opt/qt/5.11.2/gcc_64/bin -type f -executable -exec strip {} \; && \
+  find /opt/qt/5.12.8/gcc_64/bin -type f -executable -exec strip {} \; && \
   rm -rf \
     /opt/qt/dist \
     /opt/qt/Docs \
@@ -104,8 +108,8 @@ RUN \
 # (2) Set env. variable Qt5_DIR to support configuring project
 #     by explicitly passing -DQt5_DIR:PATH=${Qt5_DIR}
 #
-ENV PATH=/opt/qt/5.11.2/gcc_64/:${PATH} \
-    Qt5_DIR=/opt/qt/5.11.2/gcc_64/lib/cmake/Qt5
+ENV PATH=/opt/qt/5.12.8/gcc_64/:${PATH} \
+    Qt5_DIR=/opt/qt/5.12.8/gcc_64/lib/cmake/Qt5
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
