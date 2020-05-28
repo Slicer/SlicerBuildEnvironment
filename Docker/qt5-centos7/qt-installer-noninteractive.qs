@@ -26,7 +26,18 @@ welcomepageFinished = function()
     }
 }
 
+//From : https://github.com/rabits/dockerfiles/blob/93d2d5b1d8f4c5fba9db67086a945e7462011707/5.14-desktop/extract-qt-installer.sh
 Controller.prototype.CredentialsPageCallback = function() {
+    console.log("Credentials Page");
+    var login = installer.value("QT_CI_LOGIN");
+    var password = installer.value("QT_CI_PASSWORD");
+    if( login === "" || password === "" ) {
+        console.log("No credentials provided - could stuck here forever");
+        gui.clickButton(buttons.NextButton);
+    }
+    var widget = gui.currentPageWidget();
+    widget.loginWidget.EmailLineEdit.setText(login);
+    widget.loginWidget.PasswordLineEdit.setText(password);
     gui.clickButton(buttons.NextButton);
 }
 

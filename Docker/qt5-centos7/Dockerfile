@@ -82,7 +82,7 @@ RUN \
   cd /usr/src && \
   curl -LO http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run && \
   chmod u+x qt-unified-linux-x64-online.run && \
-  ./qt-unified-linux-x64-online.run --verbose --platform minimal --script ./qt-installer-noninteractive.qs && \
+  ./qt-unified-linux-x64-online.run QT_CI_LOGIN=${QT_ACCOUNT_LOGIN} QT_CI_PASSWORD=${QT_ACCOUNT_PASSWORD} --verbose --platform minimal --script ./qt-installer-noninteractive.qs && \
   rm -f qt-installer-noninteractive.qs qt-unified-linux-x64-online.run && \
   #
   # Cleanup
