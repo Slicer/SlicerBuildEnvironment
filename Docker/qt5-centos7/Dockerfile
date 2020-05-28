@@ -35,6 +35,7 @@ RUN \
     libXi \
     libXrender \
     libSM \
+    libxkbcommon-x11 \
     libXt-devel \
     libGLU-devel \
     mesa-libOSMesa-devel \
