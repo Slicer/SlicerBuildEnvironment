@@ -91,3 +91,21 @@ Controller.prototype.FinishedPageCallback = function() {
     }
     gui.clickButton(buttons.FinishButton);
 }
+
+Controller.prototype.ObligationsPageCallback = function() {
+    console.log("Accept obligation agreement");
+    var page = gui.pageWidgetByObjectName("ObligationsPage");
+    page.obligationsAgreement.setChecked(true);
+    page.completeChanged();
+    gui.clickButton(buttons.NextButton);
+}
+
+Controller.prototype.DynamicTelemetryPluginFormCallback = function() {
+    var page = gui.pageWidgetByObjectName("DynamicTelemetryPluginForm");
+    page.statisticGroupBox.disableStatisticRadioButton.setChecked(true);
+    gui.clickButton(buttons.NextButton);
+}
+
+Controller.prototype.PerformInstallationPageCallback = function() {
+    gui.clickButton(buttons.CommitButton);
+}
