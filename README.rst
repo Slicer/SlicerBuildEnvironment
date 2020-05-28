@@ -34,7 +34,22 @@ Each sub-directory (e.g ``qt5-centos7``) contains a  ``Dockerfile`` allowing to 
 environment (or docker image). That build environment includes a version of qt (e.g ``qt5``) and is based on a
 given operating system (e.g ``centos5``).
 
-Available build environments
+Supported build environments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |buildenv-qt5-centos7-slicer-4.11-2020.05.27| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27.svg
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:lslicer-4.11-2020.05.27
+
+slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27
+  |buildenv-qt5-centos7-slicer-4.11-2020.05.27| Build environment based on Centos7 and including Qt 5.12.8
+
+.. |buildenv-qt5-centos7-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:latest.svg
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
+
+slicer/buildenv-qt5-centos7:latest
+  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.0
+
+Deprecated build environments 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. |buildenv-qt4-ubuntu1004-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt4-ubuntu1004:latest.svg
@@ -56,18 +71,6 @@ slicer/buildenv-qt4-centos5:latest
 
 slicer/buildenv-qt5-centos7:slicer-4.10
   |buildenv-qt5-centos7-slicer-4.10| Build environment based on Centos7 and including Qt 5.11.2
-
-.. |buildenv-qt5-centos7-slicer-4.11-2020.05.27| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:lslicer-4.11-2020.05.27
-
-slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27
-  |buildenv-qt5-centos7-slicer-4.11-2020.05.27| Build environment based on Centos7 and including Qt 5.12.8
-
-.. |buildenv-qt5-centos7-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:latest.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
-
-slicer/buildenv-qt5-centos7:latest
-  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.0
 
 
 Visual Overview
