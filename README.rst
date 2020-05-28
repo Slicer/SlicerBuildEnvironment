@@ -62,7 +62,7 @@ slicer/buildenv-qt5-centos7:slicer-4.10
   :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
 
 slicer/buildenv-qt5-centos7:latest
-  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.12.8
+  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.0
 
 
 Visual Overview
