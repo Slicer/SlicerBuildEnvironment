@@ -52,6 +52,18 @@ Controller.prototype.TargetDirectoryPageCallback = function()
 }
 
 Controller.prototype.ComponentSelectionPageCallback = function() {
+    function list_packages() {
+        var components = installer.components();
+        console.log("Available components: " + components.length);
+        var packages = ["Packages: "];
+        for (var i = 0 ; i < components.length ;i++) {
+            packages.push(components[i].name);
+        }
+        console.log(packages.join(" "));
+    }
+  
+    list_packages();
+    
     var widget = gui.currentPageWidget();
 
     widget.deselectAll();
