@@ -49,6 +49,12 @@ slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17
 slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27
   |buildenv-qt5-centos7-slicer-4.11-2020.05.27| Build environment based on Centos7 and including Qt 5.12.8
 
+.. |buildenv-qt5-centos7-slicer-4.11-2020.09.30| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30.svg
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:lslicer-4.11-2020.09.30
+
+slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30
+  |buildenv-qt5-centos7-slicer-4.11-2020.09.30| Build environment based on Centos7 and including Qt 5.15.1
+
 .. |buildenv-qt5-centos7-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:latest.svg
   :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
 
