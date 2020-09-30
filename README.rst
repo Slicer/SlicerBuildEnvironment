@@ -37,6 +37,12 @@ given operating system (e.g ``centos5``).
 Supported build environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. |buildenv-qt5-centos7-slicer-4.11-2018.10.17| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17.svg
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:lslicer-4.11-2018.10.17
+
+slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17
+  |buildenv-qt5-centos7-slicer-4.11-2018.10.17| Build environment based on Centos7 and including Qt 5.11.2
+
 .. |buildenv-qt5-centos7-slicer-4.11-2020.05.27| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27.svg
   :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:lslicer-4.11-2020.05.27
 
