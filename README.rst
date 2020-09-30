@@ -299,5 +299,5 @@ Tagging a build environment image
 
 ::
 
-  git add README.rst
+  git add README.rst Docker/Makefile
   git commit -m "Set TAG to latest"
