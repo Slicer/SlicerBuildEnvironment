@@ -8,7 +8,7 @@ DOCKER = docker
 # DockerHub organization to pull/push the images from/to
 ORG = slicer
 
-IMAGES_WITH_CREDENTIALS = qt5-centos7
+IMAGES_WITH_CREDENTIALS = qt5-centos7 qt5-centos7-gcc7
 IMAGES_WITHOUT_CREDENTIALS = qt4-centos5 qt4-ubuntu1004
 
 # These images are built using the "build implicit rule"
