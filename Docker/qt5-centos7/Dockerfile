@@ -8,7 +8,6 @@ ARG QT_ACCOUNT_PASSWORD
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ADD qt-installer-noninteractive.qs /usr/src/qt-installer-noninteractive.qs
 
 RUN \
   #
@@ -77,14 +76,29 @@ RUN \
     libuuid-devel \
   && \
   #
-  # Download and install Qt
+  # Download and install Qt: new Qt installer 4.0 CLI interface
   #
   cd /usr/src && \
   curl -LO http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run && \
   chmod u+x qt-unified-linux-x64-online.run && \
-  ./qt-unified-linux-x64-online.run QT_CI_LOGIN=${QT_ACCOUNT_LOGIN} QT_CI_PASSWORD=${QT_ACCOUNT_PASSWORD} --verbose --platform minimal --script ./qt-installer-noninteractive.qs && \
-  rm -f qt-installer-noninteractive.qs qt-unified-linux-x64-online.run && \
-  #
+  # See CLI parameters here: https://wiki.qt.io/Online_Installer_4.x
+  ./qt-unified-linux-x64-online.run \
+    install \
+      qt.qt5.5151.gcc_64 \
+      qt.qt5.5151.qtscript \
+      qt.qt5.5151.qtscript.gcc_64 \
+      qt.qt5.5151.qtwebengine \
+      qt.qt5.5151.qtwebengine.gcc_64\
+    --root /opt/qt \
+    --email ${QT_ACCOUNT_LOGIN} \
+    --pw ${QT_ACCOUNT_PASSWORD} \
+    --verbose \
+    --platform minimal \
+    --accept-licenses \
+    --accept-obligations \
+    --confirm-command \
+    --auto-answer telemetry-question=No,AssociateCommonFiletypes=No,installationErrorWithCancel=Ignore,OverwriteTargetDirectory=No &&\
+  rm -f qt-unified-linux-x64-online.run && \
   # Cleanup
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
