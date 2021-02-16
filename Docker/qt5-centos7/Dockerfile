@@ -2,6 +2,7 @@ FROM dockbuild/centos7-devtoolset4-gcc5:latest
 
 ARG IMAGE
 ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
+ENV DISPLAY=:99
 
 ARG QT_ACCOUNT_LOGIN
 ARG QT_ACCOUNT_PASSWORD
@@ -48,6 +49,15 @@ RUN \
   yum install -y \
     libwayland-cursor \
   && \
+  
+  # Dependencies of Xvfb GLX environment
+  yum install -y \
+    xorg-x11-server-Xvfb \
+    xorg-x11-server-Xorg \
+    mesa-dri-drivers \
+    glx-utils\
+  && \
+
   #
   # libQt5WebEngineCore
   # * alsa-lib provides libasound.so.2
@@ -129,6 +139,9 @@ RUN \
 #
 ENV PATH=/opt/qt/5.15.1/gcc_64/:${PATH} \
     Qt5_DIR=/opt/qt/5.15.1/gcc_64/lib/cmake/Qt5
+
+#Copy in new entrypoint
+COPY entrypoint.sh /dockcross/
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
