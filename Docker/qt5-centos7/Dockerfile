@@ -44,6 +44,7 @@ RUN \
     xcb-util-keysyms \
     xcb-util-image \
     xorg-x11-server-Xvfb \
+    libwayland-cursor \
   && \
   #
   # libQt5WebEngineCore
