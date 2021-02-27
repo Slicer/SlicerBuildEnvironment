@@ -44,6 +44,11 @@ RUN \
     xcb-util-image \
   && \
   #
+  # Dependencies of Qt installer qt-unified-linux-x64-online.run
+  yum install -y \
+    libwayland-cursor \
+  && \
+  #
   # libQt5WebEngineCore
   # * alsa-lib provides libasound.so.2
   yum install -y \
