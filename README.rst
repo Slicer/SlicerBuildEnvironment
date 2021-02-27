@@ -38,19 +38,19 @@ Supported build environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. |buildenv-qt5-centos7-slicer-4.11-2018.10.17| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:lslicer-4.11-2018.10.17
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17
 
 slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17
   |buildenv-qt5-centos7-slicer-4.11-2018.10.17| Build environment based on Centos7 and including Qt 5.11.2
 
 .. |buildenv-qt5-centos7-slicer-4.11-2020.05.27| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:lslicer-4.11-2020.05.27
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27
 
 slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27
   |buildenv-qt5-centos7-slicer-4.11-2020.05.27| Build environment based on Centos7 and including Qt 5.12.8
 
 .. |buildenv-qt5-centos7-slicer-4.11-2020.09.30| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:lslicer-4.11-2020.09.30
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30
 
 slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30
   |buildenv-qt5-centos7-slicer-4.11-2020.09.30| Build environment based on Centos7 and including Qt 5.15.1
