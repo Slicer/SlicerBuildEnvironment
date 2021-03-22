@@ -3,7 +3,6 @@ FROM dockbuild/centos7-devtoolset4-gcc5:latest
 ARG IMAGE
 ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
 ENV DISPLAY=:99
-ENV QT_QPA_PLATFORM=offscreen
 ENV MESA_GL_VERSION_OVERRIDE=3.2
 
 ARG QT_ACCOUNT_LOGIN
@@ -45,6 +44,8 @@ RUN \
     mesa-libGLU-devel \
     xcb-util-keysyms \
     xcb-util-image \
+    xcb-util-wm \
+    xcb-util-renderutil \
   && \
   #
   # Dependencies of Qt installer qt-unified-linux-x64-online.run
