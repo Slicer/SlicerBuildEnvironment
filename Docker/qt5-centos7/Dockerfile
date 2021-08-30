@@ -102,11 +102,11 @@ RUN \
   # See CLI parameters here: https://wiki.qt.io/Online_Installer_4.x
   ./qt-unified-linux-x64-online.run \
     install \
-      qt.qt5.5151.gcc_64 \
-      qt.qt5.5151.qtscript \
-      qt.qt5.5151.qtscript.gcc_64 \
-      qt.qt5.5151.qtwebengine \
-      qt.qt5.5151.qtwebengine.gcc_64\
+      qt.qt5.5152.gcc_64 \
+      qt.qt5.5152.qtscript \
+      qt.qt5.5152.qtscript.gcc_64 \
+      qt.qt5.5152.qtwebengine \
+      qt.qt5.5152.qtwebengine.gcc_64\
     --root /opt/qt \
     --email ${QT_ACCOUNT_LOGIN} \
     --pw ${QT_ACCOUNT_PASSWORD} \
@@ -121,7 +121,7 @@ RUN \
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
   find /opt/qt -type f -name "*.debug" -delete && \
-  find /opt/qt/5.15.1/gcc_64/bin -type f -executable -exec strip {} \; && \
+  find /opt/qt/5.15.2/gcc_64/bin -type f -executable -exec strip {} \; && \
   rm -rf \
     /opt/qt/dist \
     /opt/qt/Docs \
@@ -140,8 +140,8 @@ RUN \
 # (2) Set env. variable Qt5_DIR to support configuring project
 #     by explicitly passing -DQt5_DIR:PATH=${Qt5_DIR}
 #
-ENV PATH=/opt/qt/5.15.1/gcc_64/:${PATH} \
-    Qt5_DIR=/opt/qt/5.15.1/gcc_64/lib/cmake/Qt5
+ENV PATH=/opt/qt/5.15.2/gcc_64/:${PATH} \
+    Qt5_DIR=/opt/qt/5.15.2/gcc_64/lib/cmake/Qt5
 
 #Copy in new entrypoint
 COPY entrypoint.sh /dockcross/
