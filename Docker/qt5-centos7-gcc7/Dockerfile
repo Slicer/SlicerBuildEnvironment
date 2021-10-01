@@ -46,6 +46,7 @@ RUN \
     xcb-util-image \
     xcb-util-wm \
     xcb-util-renderutil \
+    redhat-lsb-core \
   && \
   #
   # Dependencies of Qt installer qt-unified-linux-x64-online.run
