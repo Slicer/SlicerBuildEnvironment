@@ -71,7 +71,7 @@ slicer/buildenv-qt5-centos7:slicer-4.13-2021.10.07
   :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
 
 slicer/buildenv-qt5-centos7:latest
-  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.2
+  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.2 (GCC 7)
 
 Deprecated build environments 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

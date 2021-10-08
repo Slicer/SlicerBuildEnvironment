@@ -1,4 +1,4 @@
-FROM dockbuild/centos7-devtoolset4-gcc5:latest
+FROM dockbuild/centos7-devtoolset7-gcc7:latest
 
 ARG IMAGE
 ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
