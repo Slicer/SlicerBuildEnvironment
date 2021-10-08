@@ -15,7 +15,7 @@ IMAGES_WITHOUT_CREDENTIALS = qt4-centos5 qt4-ubuntu1004
 ALL_IMAGES = $(IMAGES_WITH_CREDENTIALS) $(IMAGES_WITHOUT_CREDENTIALS)
 
 # Tag to associated with the image
-TAG = latest
+TAG = slicer-4.13-2021.10.07
 
 # On CircleCI, do not attempt to delete container
 # See https://circleci.com/docs/docker-btrfs-error/

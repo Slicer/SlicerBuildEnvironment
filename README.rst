@@ -61,11 +61,17 @@ slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30
 slicer/buildenv-qt5-centos7:slicer-4.11-2021.02.26
   |buildenv-qt5-centos7-slicer-4.11-2021.02.26| Build environment based on Centos7 and including Qt 5.15.1
 
+.. |buildenv-qt5-centos7-slicer-4.13-2021.10.07| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.13-2021.10.07.svg
+  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.13-2021.10.07
+
+slicer/buildenv-qt5-centos7:slicer-4.13-2021.10.07
+  |buildenv-qt5-centos7-slicer-4.13-2021.10.07| Build environment based on Centos7 and including Qt 5.15.2 (Last image using GCC 5)
+
 .. |buildenv-qt5-centos7-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:latest.svg
   :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
 
 slicer/buildenv-qt5-centos7:latest
-  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.1
+  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.2
 
 Deprecated build environments 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
