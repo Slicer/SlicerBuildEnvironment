@@ -8,7 +8,7 @@ DOCKER = docker
 # DockerHub organization to pull/push the images from/to
 ORG = slicer
 
-IMAGES_WITH_CREDENTIALS = qt5-centos7
+IMAGES_WITH_CREDENTIALS = qt5-centos7 qt5-ubuntu2010
 IMAGES_WITHOUT_CREDENTIALS = qt4-centos5 qt4-ubuntu1004
 
 # These images are built using the "build implicit rule"
@@ -16,6 +16,14 @@ ALL_IMAGES = $(IMAGES_WITH_CREDENTIALS) $(IMAGES_WITHOUT_CREDENTIALS)
 
 # Tag to associated with the image
 TAG = latest
+
+# This controls whether the docker build will force-pull parent containers
+# The default behavior is force-pull. A user can set the environment variable DOCKER_PULL="false" to avoid
+# pulling. This is useful for development.
+DOCKER_BUILD_PULL_ARG = --pull
+ifeq ("$(DOCKER_PULL)", "false")
+    DOCKER_BUILD_PULL_ARG =
+endif
 
 # On CircleCI, do not attempt to delete container
 # See https://circleci.com/docs/docker-btrfs-error/
@@ -42,7 +50,7 @@ $(VERBOSE).SILENT: display_images
 $(IMAGES_WITH_CREDENTIALS): %: %/Dockerfile
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
-	$(DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
+	$(DOCKER) build $(DOCKER_BUILD_PULL_ARG) -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
@@ -61,7 +69,7 @@ $(IMAGES_WITH_CREDENTIALS): %: %/Dockerfile
 $(IMAGES_WITHOUT_CREDENTIALS): %: %/Dockerfile
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
-	$(DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
+	$(DOCKER) build $(DOCKER_BUILD_PULL_ARG) -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
