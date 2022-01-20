@@ -72,6 +72,13 @@ slicer/buildenv-qt5-centos7:slicer-4.13-2021.10.07
   |buildenv-qt5-centos7-slicer-4.13-2021.10.07| Build environment based on Centos7 and including Qt 5.15.2, GCC 5, CMake 3.17.1
 
 
+.. |buildenv-qt5-centos7-slicer-4.13-2022.01.20| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.13-2022.01.20
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.13-2022.01.20/images/sha256-18ccdac87076803267630401e675c5829b54ba763596303668f4d8e65f4bdd14
+
+slicer/buildenv-qt5-centos7:slicer-4.13-2022.01.20
+  |buildenv-qt5-centos7-slicer-4.13-2022.01.20| Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.17.1
+
+
 .. |buildenv-qt5-centos7-latest| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7
   :target: https://hub.docker.com/r/slicer/buildenv-qt5-centos7/tags
 
