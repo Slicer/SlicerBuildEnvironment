@@ -37,38 +37,43 @@ given operating system (e.g ``centos5``).
 Supported build environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. |buildenv-qt5-centos7-slicer-4.11-2018.10.17| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17
+.. |buildenv-qt5-centos7-slicer-4.11-2018.10.17| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.11-2018.10.17
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.11-2018.10.17/images/sha256-73551960143845b5f93a4d3f9a7d5fbcacd545a1ef42b6dfbf49746405baa78a
 
 slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17
   |buildenv-qt5-centos7-slicer-4.11-2018.10.17| Build environment based on Centos7 and including Qt 5.11.2
 
-.. |buildenv-qt5-centos7-slicer-4.11-2020.05.27| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27
+
+.. |buildenv-qt5-centos7-slicer-4.11-2020.05.27| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.11-2020.05.27
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.12.8-2020.05.27/images/sha256-c8e3cde0bd73c1f97a8209b73f91c839ee31b2d0f098598db0e41be73caa7f70
 
 slicer/buildenv-qt5-centos7:slicer-4.11-2020.05.27
   |buildenv-qt5-centos7-slicer-4.11-2020.05.27| Build environment based on Centos7 and including Qt 5.12.8
 
-.. |buildenv-qt5-centos7-slicer-4.11-2020.09.30| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30
+
+.. |buildenv-qt5-centos7-slicer-4.11-2020.09.30| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.11-2020.09.30
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.11-2020.09.30/images/sha256-ee8da10829b5812bf774f7c2d3d9d39b1d693e62edbc732e258143c6c7bcc5bc
 
 slicer/buildenv-qt5-centos7:slicer-4.11-2020.09.30
   |buildenv-qt5-centos7-slicer-4.11-2020.09.30| Build environment based on Centos7 and including Qt 5.15.1
 
-.. |buildenv-qt5-centos7-slicer-4.11-2021.02.26| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.11-2021.02.26.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.11-2021.02.26
+
+.. |buildenv-qt5-centos7-slicer-4.11-2021.02.26| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.11-2021.02.26
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.11-2021.02.26/images/sha256-1dbf78284b996936c47bdba2c83ec013f2e081387455604f2b6d967366f3bf49
 
 slicer/buildenv-qt5-centos7:slicer-4.11-2021.02.26
   |buildenv-qt5-centos7-slicer-4.11-2021.02.26| Build environment based on Centos7 and including Qt 5.15.1
 
-.. |buildenv-qt5-centos7-slicer-4.13-2021.10.07| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.13-2021.10.07.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.13-2021.10.07
+
+.. |buildenv-qt5-centos7-slicer-4.13-2021.10.07| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.13-2021.10.07
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.13-2021.10.07/images/sha256-c719f3beedebda6f0ac21ed899a29a1ea94fcf34b08e58f19d49888a992ba7f7
 
 slicer/buildenv-qt5-centos7:slicer-4.13-2021.10.07
   |buildenv-qt5-centos7-slicer-4.13-2021.10.07| Build environment based on Centos7 and including Qt 5.15.2 (Last image using GCC 5)
 
-.. |buildenv-qt5-centos7-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:latest.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:latest
+
+.. |buildenv-qt5-centos7-latest| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7
+  :target: https://hub.docker.com/r/slicer/buildenv-qt5-centos7/tags
 
 slicer/buildenv-qt5-centos7:latest
   |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.2 (GCC 7)
@@ -76,22 +81,22 @@ slicer/buildenv-qt5-centos7:latest
 Deprecated build environments 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. |buildenv-qt4-ubuntu1004-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt4-ubuntu1004:latest.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt4-ubuntu1004:latest
+.. |buildenv-qt4-ubuntu1004-latest| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt4-ubuntu1004/latest
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt4-ubuntu1004/latest/images/sha256-ac7bd0b76a7bb2c071328488474a3cc7770715588f911617d1040c98d0e161db
 
 slicer/buildenv-qt4-ubuntu1004:latest
   |buildenv-qt4-ubuntu1004-latest| Build environment based on Ubuntu 10.04 and including Qt 4.8.6
 
 
-.. |buildenv-qt4-centos5-latest| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt4-centos5:latest.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt4-centos5:latest
+.. |buildenv-qt4-centos5-latest| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt4-centos5/latest
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt4-centos5/latest/images/sha256-a87410f2783e50d6ad963ff8d9b26ece86488c725666fb90d7cffea4b013ac07
 
 slicer/buildenv-qt4-centos5:latest
   |buildenv-qt4-centos5-latest| Build environment based on Centos5 and including Qt 4.8.7
 
 
-.. |buildenv-qt5-centos7-slicer-4.10| image:: https://images.microbadger.com/badges/image/slicer/buildenv-qt5-centos7:slicer-4.10.svg
-  :target: https://microbadger.com/images/slicer/buildenv-qt5-centos7:slicer-4.10
+.. |buildenv-qt5-centos7-slicer-4.10| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.10
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.10/images/sha256-211f514f00e83bc68f967b10f1727af0c8a8f98d0b8334a376ca2c3ef4e17a18?context=explore
 
 slicer/buildenv-qt5-centos7:slicer-4.10
   |buildenv-qt5-centos7-slicer-4.10| Build environment based on Centos7 and including Qt 5.11.2
