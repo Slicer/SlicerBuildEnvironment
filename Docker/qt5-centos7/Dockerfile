@@ -94,6 +94,12 @@ RUN \
     libuuid-devel \
   && \
   #
+  # SlicerIMSTK dependencies
+  #
+  yum install -y \
+    libusbx-devel \
+  && \
+  #
   # Download and install Qt: new Qt installer 4.0 CLI interface
   #
   cd /usr/src && \
