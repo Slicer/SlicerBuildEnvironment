@@ -80,7 +80,7 @@ slicer/buildenv-qt5-centos7:slicer-4.13-2022.01.20
 
 
 .. |buildenv-qt5-centos7-slicer-5.0| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-5.0
-  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-5.0/images/sha256-57815be03a002b2a47307ce26ef55f0f5955cb76df0605e42d375ff4090d2f68?context=explore
+  :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-5.0/images/sha256-57815be03a002b2a47307ce26ef55f0f5955cb76df0605e42d375ff4090d2f68
 
 slicer/buildenv-qt5-centos7:slicer-5.0
   |buildenv-qt5-centos7-slicer-5.0| Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
