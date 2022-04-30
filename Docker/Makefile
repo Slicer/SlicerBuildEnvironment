@@ -9,7 +9,7 @@ DOCKER = docker
 ORG = slicer
 
 IMAGES_WITH_CREDENTIALS = qt5-centos7
-IMAGES_WITHOUT_CREDENTIALS = qt4-centos5
+IMAGES_WITHOUT_CREDENTIALS =
 
 # These images are built using the "build implicit rule"
 ALL_IMAGES = $(IMAGES_WITH_CREDENTIALS) $(IMAGES_WITHOUT_CREDENTIALS)
