@@ -83,7 +83,7 @@ slicer/buildenv-qt5-centos7:slicer-4.13-2022.01.20
   :target: https://hub.docker.com/r/slicer/buildenv-qt5-centos7/tags
 
 slicer/buildenv-qt5-centos7:latest
-  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.17.1
+  |buildenv-qt5-centos7-latest| Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
 
 Deprecated build environments 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
