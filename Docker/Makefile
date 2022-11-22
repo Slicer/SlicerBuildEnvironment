@@ -40,6 +40,12 @@ $(VERBOSE).SILENT: display_images
 .PHONY: display_images
 
 $(IMAGES_WITH_CREDENTIALS): %: %/Dockerfile
+ifndef QT_ACCOUNT_LOGIN
+	$(error QT_ACCOUNT_LOGIN env. variable is undefined)
+endif
+ifndef QT_ACCOUNT_PASSWORD
+	$(error QT_ACCOUNT_PASSWORD env. variable is undefined)
+endif
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
 	$(DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
