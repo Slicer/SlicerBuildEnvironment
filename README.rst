@@ -124,8 +124,50 @@ slicer/buildenv-qt5-centos7:slicer-4.10
 Visual Overview
 ^^^^^^^^^^^^^^^
 
-.. image:: http://interactive.blockdiag.com/image?compression=deflate&encoding=base64&src=eJx9ksFOhDAQhu_7FA1eJUEDwaTBw-7Bi29gjCm0i40Ns5ZhEzT77rbdCoUFjp3h_-fjnykVVF9cspr87ggBLUWDDCU0pCAn0KiZRGo6XBxZp_DjCA228keY9hPdmUZlBNBmby32ylY5IAr-bjVd2TXYPSRJetu1lmX8L1asFKqI_DPm4owAqhX4GNdVlUb3ZGYwDibxMwm97OCyk4qL5hx_YzrMqECBLqK7ZJ8f9ofIEY4ya7Mk86DBr3jWsbKOOH5j7Sc2N5jBhBXSqduKeBJsPg02D4J11NlGsLlH9q8ZbzZM2Iw1n5EOMotZa-hO7uwIcZyGIlKy1Ez3EXXlq_mrrD_xRbPeF_2ig3hpQHlZ9ebm1B3MlntwSbONzdJYn9MqWQm9NWTp0ujaSuligleEyx-9JzCZ
-  :target: http://interactive.blockdiag.com/?compression=deflate&src=eJx9ksFOhDAQhu_7FA1eJUEDwaTBw-7Bi29gjCm0i40Ns5ZhEzT77rbdCoUFjp3h_-fjnykVVF9cspr87ggBLUWDDCU0pCAn0KiZRGo6XBxZp_DjCA228keY9hPdmUZlBNBmby32ylY5IAr-bjVd2TXYPSRJetu1lmX8L1asFKqI_DPm4owAqhX4GNdVlUb3ZGYwDibxMwm97OCyk4qL5hx_YzrMqECBLqK7ZJ8f9ofIEY4ya7Mk86DBr3jWsbKOOH5j7Sc2N5jBhBXSqduKeBJsPg02D4J11NlGsLlH9q8ZbzZM2Iw1n5EOMotZa-hO7uwIcZyGIlKy1Ez3EXXlq_mrrD_xRbPeF_2ig3hpQHlZ9ebm1B3MlntwSbONzdJYn9MqWQm9NWTp0ujaSuligleEyx-9JzCZ
+.. code-block:: mermaid
+
+  graph TD;
+  subgraph library[Base image]
+    centos5;
+    ubuntu1004;
+    centos7-gcc5[centos7];
+    centos7-gcc7[centos7];
+  end
+  subgraph dockbuild[Dockbuild image]
+    db-centos5[centos5-devtoolset2-gcc4];
+    db-ubuntu1004[ubuntu1004-gcc4]
+    db-centos7-gcc5[centos7-devtoolset4-gcc5]
+    db-centos7-gcc7[centos7-devtoolset7-gcc7]
+  end
+  subgraph slicer[SlicerBuildEnvironment image]
+    buildenv-qt4-centos5;
+    buildenv-qt4-ubuntu1004;
+    buildenv-qt5-centos7-gcc5[...\nbuildenv-qt5-centos7:slicer-4.13-2021.10.07];
+    buildenv-qt5-centos7-gcc7[buildenv-qt5-centos7:slicer-4.13-2022.01.20\nbuildenv-qt5-centos7:slicer-5.0\nbuildenv-qt5-centos7:slicer-5.2\nbuildenv-qt5-centos7:latest];
+  end
+  centos5 --> db-centos5;
+  db-centos5 --> buildenv-qt4-centos5;
+  
+  ubuntu1004 --> db-ubuntu1004;
+  db-ubuntu1004 --> buildenv-qt4-ubuntu1004;
+  
+  centos7-gcc5 --> db-centos7-gcc5;
+  db-centos7-gcc5 --> buildenv-qt5-centos7-gcc5;
+
+  centos7-gcc7 --> db-centos7-gcc7;
+  db-centos7-gcc7 --> buildenv-qt5-centos7-gcc7;
+
+  classDef dep stroke-dasharray: 5 5;
+  class centos5,db-centos5 dep;
+  class ubuntu1004,db-ubuntu1004 dep;
+  class centos7-gcc5,db-centos7-gcc5 dep;
+  class centos7-gcc7,db-centos7-gcc7 dep;
+
+  classDef builenv fill:#0B7CBC
+  class buildenv-qt4-centos5 builenv;
+  class buildenv-qt4-ubuntu1004 builenv;
+  class buildenv-qt5-centos7-gcc5 builenv;
+  class buildenv-qt5-centos7-gcc7 builenv;
 
 
 dockbuild
