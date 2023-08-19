@@ -15,7 +15,7 @@ IMAGES_WITHOUT_CREDENTIALS =
 ALL_IMAGES = $(IMAGES_WITH_CREDENTIALS) $(IMAGES_WITHOUT_CREDENTIALS)
 
 # Tag to associated with the image
-TAG = latest
+TAG = slicer-5.4
 
 # On CircleCI, do not attempt to delete container
 # See https://circleci.com/docs/docker-btrfs-error/
