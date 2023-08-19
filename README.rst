@@ -95,7 +95,7 @@ slicer/buildenv-qt5-centos7:slicer-5.2
   :target: https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-5.4/images/sha256-8ba0c4bf3cd458883652b69d61c2e82d804283a26d260e731bb5b81963ee3f87
 
 slicer/buildenv-qt5-centos7:slicer-5.4
-  |buildenv-qt5-centos7-slicer-5.4| Build environment based on Centos7 and including Qt 5.15.4, GCC 7, CMake 3.22.1
+  |buildenv-qt5-centos7-slicer-5.4| Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
 
 .. |buildenv-qt5-centos7-latest| image:: https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7
   :target: https://hub.docker.com/r/slicer/buildenv-qt5-centos7/tags
