@@ -362,6 +362,8 @@ Tagging a build environment image
 
 2. Add an entry in ``README.rst`` referencing the chosen tag
 
+  Since the image has not yet been published, specify ``sha256-UNKNOWN`` as image hash.
+
 3. Commit the changes
 
 ::
@@ -377,7 +379,7 @@ Tagging a build environment image
   make <name-of-image>
   make <name-of-image>.push
 
-5. Update ``Docker/Makefile`` with the "latest" tag
+5. Update ``Docker/Makefile`` with the "latest" tag, update ``README.rst`` replacing ``sha256-UNKNOWN`` with expected value.
 
 ::
 
