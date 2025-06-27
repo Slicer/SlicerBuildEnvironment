@@ -253,38 +253,41 @@ To build a specific image:
 
 The following steps will:
 
-  - download Slicer 4.8.1 source code
-  - download the associated build environment
-  - configure, build and package Slicer
+  * download Slicer 5.8.1 source code
+  * download the associated build environment
+  * configure, build and package Slicer
 
     ```bash
-    ROOT_DIR=/tmp/Slicer481
+    SLICER_BUILD_ENV_NAME=qt5-centos7
+    SLICER_BUILD_ENV_VERSION=5.8
+    SLICER_BRANCH=v5.8.1
+
+    ROOT_DIR=/tmp/Slicer-$SLICER_BUILD_ENV_VERSION
     mkdir -p $ROOT_DIR
-    
+
     cd ${ROOT_DIR}
-    
+
+    slicer_build_env_script=~/bin/slicer-buildenv-$SLICER_BUILD_ENV_NAME-$SLICER_BUILD_ENV_VERSION
+
     # Download sources
-    svn co http://svn.slicer.org/Slicer4/branches/Slicer-4-8 Slicer -r 26813
-    
+    git clone https://github.com/Slicer/Slicer -b $SLICER_BRANCH
+
     # Download corresponding build environment and generate convenience script
-    docker run --rm slicer/buildenv-qt4-ubuntu1004 > ~/bin/slicer-buildenv-qt4-ubuntu1004
-    chmod u+x ~/bin/slicer-buildenv-qt4-ubuntu1004
-    
+    docker run --rm slicer/buildenv-qt5-centos7 > $slicer_build_env_script
+    chmod u+x $slicer_build_env_script
+
     # Configure Slicer
-    slicer-buildenv-qt4-ubuntu1004 cmake \
-      -BSlicer-build -HSlicer \
+    $slicer_build_env_script cmake \
+      -BSlicer-build \
+      -SSlicer \
       -GNinja \
-      -DCMAKE_BUILD_TYPE:STRING=Release \
-      -DSlicer_USE_PYTHONQT_WITH_TCL:BOOL=OFF \
-      -DSlicer_BUILD_CLI:BOOL=OFF \
-      -DSlicer_USE_SimpleITK:BOOL=OFF \
-      -DBUILD_TESTING:BOOL=OFF
-    
+      -DCMAKE_BUILD_TYPE:STRING=Release
+
     # Build Slicer
-    slicer-buildenv-qt4-ubuntu1004 cmake --build Slicer-build
-    
+    $slicer_build_env_script cmake --build Slicer-build
+
     # Package Slicer
-    slicer-buildenv-qt4-ubuntu1004 cmake --build Slicer-build/Slicer-build --target package
+    $slicer_build_env_script cmake --build Slicer-build/Slicer-build --target package
     ```
 
 ### Configure, build and package a Slicer extension for Linux
@@ -296,32 +299,39 @@ The following steps will:
     in the **previous tutorial**
 
     ```bash
-    ROOT_DIR=/tmp/Slicer481
-    
+    SLICER_BUILD_ENV_NAME=qt5-centos7
+    SLICER_BUILD_ENV_VERSION=5.8
+    SLICER_BRANCH=v5.8.1
+
+    slicer_build_env_script=~/bin/slicer-buildenv-$SLICER_BUILD_ENV_NAME-$SLICER_BUILD_ENV_VERSION
+
+    ROOT_DIR=/tmp/Slicer-$SLICER_BUILD_ENV_VERSION
+
     cd ${ROOT_DIR}
-    
+
     EXTENSION_NAME=ImageMaker
-    
+
     # Download extension source
     git clone git://github.com/finetjul/ImageMaker ${EXTENSION_NAME}
-    
+
     # Configure the extension
-    slicer-buildenv-qt4-ubuntu1004 cmake \
-      -B${EXTENSION_NAME}-build -H${EXTENSION_NAME} \
+    $slicer_build_env_script cmake \
+      -B${EXTENSION_NAME}-build \
+      -S${EXTENSION_NAME} \
       -GNinja \
       -DCMAKE_BUILD_TYPE:STRING=Release \
       -DSlicer_DIR:PATH=/work/Slicer-build/Slicer-build
-    
-    
+
+
     # Hint: /work is the working directory in the image, it corresponds to
     #       the directory from which the script `slicer-buildenv-qt4-ubuntu1004` is called.
-    
-    
+
+
     # Build the extension
-    slicer-buildenv-qt4-ubuntu1004 cmake --build ${EXTENSION_NAME}-build
-    
+    $slicer_build_env_script cmake --build ${EXTENSION_NAME}-build
+
     # Package the extension
-    slicer-buildenv-qt4-ubuntu1004 cmake --build ${EXTENSION_NAME}-build --target package
+    $slicer_build_env_script cmake --build ${EXTENSION_NAME}-build --target package
     ```
 
 ## Maintainers
