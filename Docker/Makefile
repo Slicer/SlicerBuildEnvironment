@@ -47,7 +47,6 @@ ifndef QT_ACCOUNT_PASSWORD
 	$(error QT_ACCOUNT_PASSWORD env. variable is undefined)
 endif
 	$(eval REPO := buildenv-$@)
-	$(eval IMAGEID := $(shell $(DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
 	$(DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
@@ -56,8 +55,12 @@ endif
 		--build-arg QT_ACCOUNT_LOGIN=$(QT_ACCOUNT_LOGIN) \
 		--build-arg QT_ACCOUNT_PASSWORD=$(QT_ACCOUNT_PASSWORD) \
 		$@
-	CURRENT_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO)) && \
-	if [ -n "$(IMAGEID)" ] && [ "$(IMAGEID)" != "$$CURRENT_IMAGEID" ]; then $(DOCKER) rmi "$(IMAGEID)" || true; fi
+	CURRENT_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)); \
+	PREVIOUS_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG) --filter "before=$$CURRENT_IMAGEID"); \
+	if [ -n "$$PREVIOUS_IMAGEID" ] && [ "$$PREVIOUS_IMAGEID" != "$$CURRENT_IMAGEID" ]; then \
+	  echo "Removing previous image $$PREVIOUS_IMAGEID"; \
+	  $(BUILD_DOCKER) rmi "$$PREVIOUS_IMAGEID" || true; \
+	fi
 
 .PHONY: $(IMAGES_WITH_CREDENTIALS)
 
@@ -66,15 +69,18 @@ endif
 #
 $(IMAGES_WITHOUT_CREDENTIALS): %: %/Dockerfile
 	$(eval REPO := buildenv-$@)
-	$(eval IMAGEID := $(shell $(DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
 	$(DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		$@
-	CURRENT_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO)) && \
-	if [ -n "$(IMAGEID)" ] && [ "$(IMAGEID)" != "$$CURRENT_IMAGEID" ]; then $(DOCKER) rmi "$(IMAGEID)" || true; fi
+	CURRENT_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)); \
+	PREVIOUS_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG) --filter "before=$$CURRENT_IMAGEID"); \
+	if [ -n "$$PREVIOUS_IMAGEID" ] && [ "$$PREVIOUS_IMAGEID" != "$$CURRENT_IMAGEID" ]; then \
+	  echo "Removing previous image $$PREVIOUS_IMAGEID"; \
+	  $(BUILD_DOCKER) rmi "$$PREVIOUS_IMAGEID" || true; \
+	fi
 
 .PHONY: $(IMAGES_WITHOUT_CREDENTIALS)
 
