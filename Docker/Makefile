@@ -85,7 +85,8 @@ endif
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
 	$(BUILD_DOCKER) $(BUILD_CMD) --pull -t $(ORG)/$(REPO):$(TAG) \
-		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
+		--build-arg IMAGE=$(ORG)/$(REPO) \
+		--build-arg VERSION=$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
@@ -104,7 +105,8 @@ $(IMAGES_WITHOUT_CREDENTIALS): %: %/Dockerfile
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
 	$(BUILD_DOCKER) $(BUILD_CMD) --pull -t $(ORG)/$(REPO):$(TAG) \
-		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
+		--build-arg IMAGE=$(ORG)/$(REPO) \
+		--build-arg VERSION=$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
