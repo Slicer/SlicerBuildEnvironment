@@ -16,6 +16,9 @@ available build environment.
       |
       |--- Docker
               |
+              |--- qt5-almalinux8-gcc14
+              |          |--- Dockerfile
+              |
               |--- qt5-centos7
               |          |--- Dockerfile
               |
@@ -24,10 +27,10 @@ available build environment.
 
 ## Docker-based Environments
 
-Each sub-directory (e.g `qt5-centos7`) contains a `Dockerfile` allowing
+Each sub-directory (e.g `qt5-almalinux8-gcc14`) contains a `Dockerfile` allowing
 to generate a **reusable** build environment (or docker image). That
 build environment includes a version of qt (e.g `qt5`) and is based on a
-given operating system (e.g `centos7`).
+given operating system (e.g `almalinux8`).
 
 ### Supported build environments
 
@@ -40,6 +43,11 @@ Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
 
 [![buildenv-qt5-centos7-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7)](https://hub.docker.com/r/slicer/buildenv-qt5-centos7/tags)
 Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
+
+#### slicer/buildenv-qt5-almalinux8-gcc14:latest
+
+[![buildenv-qt5-almalinux8-gcc14-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-almalinux8-gcc14)](https://hub.docker.com/r/slicer/buildenv-qt5-almalinux8-gcc14/tags)
+Build environment based on AlmaLinux 8 and including Qt 5.15.2, GCC 14, CMake 3.31.8
 
 ### Deprecated build environments
 
