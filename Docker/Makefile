@@ -2,8 +2,11 @@
 # Parameters
 #
 
-# Name of the docker executable
-DOCKER = docker
+# Name of the docker-equivalent executable for building images.
+# OCI: open container interface.
+# Common values: docker, podman
+DOCKER := $(or $(OCI_EXE), docker)
+BUILD_DOCKER := $(or $(BUILD_DOCKER), $(DOCKER))
 
 # DockerHub organization to pull/push the images from/to
 ORG = slicer
@@ -49,8 +52,8 @@ ifndef QT_ACCOUNT_PASSWORD
 	$(error QT_ACCOUNT_PASSWORD env. variable is undefined)
 endif
 	$(eval REPO := buildenv-$@)
-	$(eval IMAGEID := $(shell $(DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
-	$(DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
+	$(eval IMAGEID := $(shell $(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
+	$(BUILD_DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
@@ -58,8 +61,8 @@ endif
 		--build-arg QT_ACCOUNT_LOGIN=$(QT_ACCOUNT_LOGIN) \
 		--build-arg QT_ACCOUNT_PASSWORD=$(QT_ACCOUNT_PASSWORD) \
 		$@
-	CURRENT_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO)) && \
-	if [ -n "$(IMAGEID)" ] && [ "$(IMAGEID)" != "$$CURRENT_IMAGEID" ]; then $(DOCKER) rmi "$(IMAGEID)" || true; fi
+	CURRENT_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO)) && \
+	if [ -n "$(IMAGEID)" ] && [ "$(IMAGEID)" != "$$CURRENT_IMAGEID" ]; then $(BUILD_DOCKER) rmi "$(IMAGEID)" || true; fi
 
 .PHONY: $(IMAGES_WITH_CREDENTIALS)
 
@@ -68,15 +71,15 @@ endif
 #
 $(IMAGES_WITHOUT_CREDENTIALS): %: %/Dockerfile
 	$(eval REPO := buildenv-$@)
-	$(eval IMAGEID := $(shell $(DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
-	$(DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
+	$(eval IMAGEID := $(shell $(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
+	$(BUILD_DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		$@
-	CURRENT_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO)) && \
-	if [ -n "$(IMAGEID)" ] && [ "$(IMAGEID)" != "$$CURRENT_IMAGEID" ]; then $(DOCKER) rmi "$(IMAGEID)" || true; fi
+	CURRENT_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO)) && \
+	if [ -n "$(IMAGEID)" ] && [ "$(IMAGEID)" != "$$CURRENT_IMAGEID" ]; then $(BUILD_DOCKER) rmi "$(IMAGEID)" || true; fi
 
 .PHONY: $(IMAGES_WITHOUT_CREDENTIALS)
 
@@ -86,7 +89,7 @@ $(IMAGES_WITHOUT_CREDENTIALS): %: %/Dockerfile
 .SECONDEXPANSION:
 $(addsuffix .run,$(ALL_IMAGES)):
 	$(eval REPO := buildenv-$(firstword $(subst ., ,$@)))
-	$(DOCKER) run -ti --rm $(ORG)/$(REPO):$(TAG) bash
+	$(BUILD_DOCKER) run -ti --rm $(ORG)/$(REPO):$(TAG) bash
 
 .PHONY: $(addsuffix .run,$(ALL_IMAGES))
 
@@ -96,7 +99,7 @@ $(addsuffix .run,$(ALL_IMAGES)):
 .SECONDEXPANSION:
 $(addsuffix .pull,$(ALL_IMAGES)):
 	$(eval REPO := buildenv-$(firstword $(subst ., ,$@)))
-	$(DOCKER) pull $(ORG)/$(REPO):$(TAG)
+	$(BUILD_DOCKER) pull $(ORG)/$(REPO):$(TAG)
 
 pull: $(addsuffix .pull,$(ALL_IMAGES))
 
@@ -108,7 +111,7 @@ pull: $(addsuffix .pull,$(ALL_IMAGES))
 .SECONDEXPANSION:
 $(addsuffix .push,$(ALL_IMAGES)):
 	$(eval REPO := buildenv-$(firstword $(subst ., ,$@)))
-	$(DOCKER) push $(ORG)/$(REPO):$(TAG)
+	$(BUILD_DOCKER) push $(ORG)/$(REPO):$(TAG)
 
 push: $(addsuffix .push,$(ALL_IMAGES))
 
