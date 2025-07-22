@@ -3,11 +3,10 @@ FROM dockbuild/almalinux8-devtoolset14-gcc14:${VERSION}
 
 LABEL maintainer="3D Slicer Community <slicer-devel@bwh.harvard.edu>"
 
-ENV DISPLAY=:99
-ENV MESA_GL_VERSION_OVERRIDE=3.2
-
 ARG QT_ACCOUNT_LOGIN
 ARG QT_ACCOUNT_PASSWORD
+
+#include "common.pre-exec"
 
 RUN \
   #
@@ -142,8 +141,5 @@ RUN \
 #
 ENV PATH=/opt/qt/5.15.2/gcc_64/:${PATH} \
     Qt5_DIR=/opt/qt/5.15.2/gcc_64/lib/cmake/Qt5
-
-#Copy in new entrypoint
-COPY entrypoint.sh /dockcross/
 
 #include "common.label-and-env"
