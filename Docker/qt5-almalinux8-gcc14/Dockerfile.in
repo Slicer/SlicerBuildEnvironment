@@ -1,6 +1,8 @@
 ARG VERSION=latest
 FROM dockbuild/almalinux8-devtoolset14-gcc14:${VERSION}
 
+LABEL maintainer="3D Slicer Community <slicer-devel@bwh.harvard.edu>"
+
 ARG IMAGE
 ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
 ENV DISPLAY=:99
