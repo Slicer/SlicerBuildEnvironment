@@ -29,6 +29,11 @@ ALL_IMAGES = $(IMAGES_WITH_CREDENTIALS) $(IMAGES_WITHOUT_CREDENTIALS)
 # Tag to associated with the image
 TAG = latest
 
+# Generated Dockerfiles.
+GEN_IMAGES := $(ALL_IMAGES)
+
+GEN_IMAGE_DOCKERFILES = $(addsuffix /Dockerfile,$(GEN_IMAGES))
+
 # On CircleCI, do not attempt to delete container
 # See https://circleci.com/docs/docker-btrfs-error/
 RM = --rm
@@ -51,6 +56,17 @@ display_images:
 $(VERBOSE).SILENT: display_images
 .PHONY: display_images
 
+#
+# Dockerfile configuration implicit rules
+#
+$(GEN_IMAGE_DOCKERFILES): %Dockerfile: %Dockerfile.in $(DOCKER_COMPOSITE_PATH)
+	cp $< $@
+
+.PHONY: $(GEN_IMAGE_DOCKERFILES)
+
+#
+# build implicit rule
+#
 $(IMAGES_WITH_CREDENTIALS): %: %/Dockerfile
 ifndef QT_ACCOUNT_LOGIN
 	$(error QT_ACCOUNT_LOGIN env. variable is undefined)
@@ -99,6 +115,14 @@ $(addsuffix .run,$(ALL_IMAGES)):
 	$(BUILD_DOCKER) run -ti --rm $(ORG)/$(REPO):$(TAG) bash
 
 .PHONY: $(addsuffix .run,$(ALL_IMAGES))
+
+#
+# clean rule
+#
+clean:
+	for d in $(GEN_IMAGE_DOCKERFILES) ; do rm -f $$d ; done
+
+.PHONY: clean
 
 #
 # pull implicit rule
