@@ -54,12 +54,14 @@ RUN \
   #
   # libQt5WebEngineCore
   # * alsa-lib provides libasound.so.2
+  # * nss provides libsmime3.so
   dnf install -y \
     alsa-lib \
     libXcomposite \
     libXcursor \
     libXrandr \
     libXtst \
+    nss \
     mesa-libEGL \
   && \
   #
