@@ -57,11 +57,11 @@ endif
 		--build-arg QT_ACCOUNT_LOGIN=$(QT_ACCOUNT_LOGIN) \
 		--build-arg QT_ACCOUNT_PASSWORD=$(QT_ACCOUNT_PASSWORD) \
 		$@
-	CURRENT_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)); \
-	PREVIOUS_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG) --filter "before=$$CURRENT_IMAGEID"); \
+	CURRENT_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO):$(TAG)); \
+	PREVIOUS_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO):$(TAG) --filter "before=$$CURRENT_IMAGEID"); \
 	if [ -n "$$PREVIOUS_IMAGEID" ] && [ "$$PREVIOUS_IMAGEID" != "$$CURRENT_IMAGEID" ]; then \
 	  echo "Removing previous image $$PREVIOUS_IMAGEID"; \
-	  $(BUILD_DOCKER) rmi "$$PREVIOUS_IMAGEID" || true; \
+	  $(DOCKER) rmi "$$PREVIOUS_IMAGEID" || true; \
 	fi
 
 .PHONY: $(IMAGES_WITH_CREDENTIALS)
@@ -77,11 +77,11 @@ $(IMAGES_WITHOUT_CREDENTIALS): %: %/Dockerfile
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		$@
-	CURRENT_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)); \
-	PREVIOUS_IMAGEID=$$($(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG) --filter "before=$$CURRENT_IMAGEID"); \
+	CURRENT_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO):$(TAG)); \
+	PREVIOUS_IMAGEID=$$($(DOCKER) images -q $(ORG)/$(REPO):$(TAG) --filter "before=$$CURRENT_IMAGEID"); \
 	if [ -n "$$PREVIOUS_IMAGEID" ] && [ "$$PREVIOUS_IMAGEID" != "$$CURRENT_IMAGEID" ]; then \
 	  echo "Removing previous image $$PREVIOUS_IMAGEID"; \
-	  $(BUILD_DOCKER) rmi "$$PREVIOUS_IMAGEID" || true; \
+	  $(DOCKER) rmi "$$PREVIOUS_IMAGEID" || true; \
 	fi
 
 .PHONY: $(IMAGES_WITHOUT_CREDENTIALS)
