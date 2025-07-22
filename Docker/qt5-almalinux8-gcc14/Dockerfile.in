@@ -29,6 +29,7 @@ RUN \
     libICE \
     libX11 \
     libxcb \
+    libXdamage \
     libXext \
     libXi \
     libXrender \
