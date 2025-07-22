@@ -8,6 +8,13 @@
 DOCKER := $(or $(OCI_EXE), docker)
 BUILD_DOCKER := $(or $(BUILD_DOCKER), $(DOCKER))
 
+# The build sub-command. Use:
+#
+#   export "BUILD_CMD=buildx build --platform linux/amd64,linux/arm64"
+#
+# to generate multi-platform images.
+BUILD_CMD := $(or $(BUILD_CMD), build)
+
 # DockerHub organization to pull/push the images from/to
 ORG = slicer
 
@@ -53,7 +60,7 @@ ifndef QT_ACCOUNT_PASSWORD
 endif
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
-	$(BUILD_DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
+	$(BUILD_DOCKER) $(BUILD_CMD) --pull -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
@@ -72,7 +79,7 @@ endif
 $(IMAGES_WITHOUT_CREDENTIALS): %: %/Dockerfile
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
-	$(BUILD_DOCKER) build --pull -t $(ORG)/$(REPO):$(TAG) \
+	$(BUILD_DOCKER) $(BUILD_CMD) --pull -t $(ORG)/$(REPO):$(TAG) \
 		--build-arg IMAGE=$(ORG)/$(REPO):$(TAG) \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg VCS_URL=`git config --get remote.origin.url` \
