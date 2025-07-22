@@ -82,6 +82,7 @@ endif
 ifndef QT_ACCOUNT_PASSWORD
 	$(error QT_ACCOUNT_PASSWORD env. variable is undefined)
 endif
+	mkdir -p $@/imagefiles && cp --remove-destination -r imagefiles $@/
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
 	$(BUILD_DOCKER) $(BUILD_CMD) --pull -t $(ORG)/$(REPO):$(TAG) \
@@ -102,6 +103,7 @@ endif
 # build implicit rule
 #
 $(IMAGES_WITHOUT_CREDENTIALS): %: %/Dockerfile
+	mkdir -p $@/imagefiles && cp --remove-destination -r imagefiles $@/
 	$(eval REPO := buildenv-$@)
 	$(eval IMAGEID := $(shell $(BUILD_DOCKER) images -q $(ORG)/$(REPO):$(TAG)))
 	$(BUILD_DOCKER) $(BUILD_CMD) --pull -t $(ORG)/$(REPO):$(TAG) \
@@ -130,6 +132,7 @@ $(addsuffix .run,$(ALL_IMAGES)):
 # clean rule
 #
 clean:
+	for d in $(ALL_IMAGES) ; do rm -rf $$d/imagefiles ; done
 	for d in $(GEN_IMAGE_DOCKERFILES) ; do rm -f $$d ; done
 
 .PHONY: clean
