@@ -1,15 +1,12 @@
-FROM dockbuild/centos7-devtoolset7-gcc7:latest
+ARG VERSION=latest
+FROM dockbuild/almalinux8-devtoolset14-gcc14:${VERSION}
 
-ARG IMAGE
-ENV DEFAULT_DOCKCROSS_IMAGE=${IMAGE}
-ENV DISPLAY=:99
-ENV MESA_GL_VERSION_OVERRIDE=3.2
+LABEL maintainer="3D Slicer Community <slicer-devel@bwh.harvard.edu>"
 
 ARG QT_ACCOUNT_LOGIN
 ARG QT_ACCOUNT_PASSWORD
 
-ARG DEBIAN_FRONTEND=noninteractive
-
+#include "common.pre-exec"
 
 RUN \
   #
@@ -24,7 +21,7 @@ RUN \
   #   "gstreamer1-plugins-good" and "gstreamer1-plugins-base" along with
   #   all video and image codecs.
   #
-  yum install -y \
+  dnf install -y \
     flex \
     fontconfig \
     freetype \
@@ -32,13 +29,13 @@ RUN \
     libICE \
     libX11 \
     libxcb \
+    libXdamage \
     libXext \
     libXi \
     libXrender \
     libSM \
     libxkbcommon-x11 \
     libXt-devel \
-    libGLU-devel \
     mesa-libOSMesa-devel \
     mesa-libGL-devel \
     mesa-libGLU-devel \
@@ -47,29 +44,24 @@ RUN \
     xcb-util-wm \
     xcb-util-renderutil \
   && \
-  #
-  # Dependencies of Qt installer qt-unified-linux-x64-online.run
-  yum install -y \
-    libwayland-cursor \
-  && \
-  
   # Dependencies of Xvfb GLX environment
-  yum install -y \
+  dnf install -y \
     xorg-x11-server-Xvfb \
     xorg-x11-server-Xorg \
     mesa-dri-drivers \
-    glx-utils\
+    glx-utils \
   && \
-
   #
   # libQt5WebEngineCore
   # * alsa-lib provides libasound.so.2
-  yum install -y \
+  # * nss provides libsmime3.so
+  dnf install -y \
     alsa-lib \
     libXcomposite \
     libXcursor \
     libXrandr \
     libXtst \
+    nss \
     mesa-libEGL \
   && \
   #
@@ -77,36 +69,37 @@ RUN \
   # * pulseaudio-libs-glib2 provides libpulse-mainloop-glib.so.0
   # * pulseaudio-libs provides libpulse.so.0
   #
-  yum install -y \
+  dnf install -y \
     pulseaudio-libs \
     pulseaudio-libs-glib2 \
   && \
   #
   # Slicer dependencies
   #
-  yum install -y \
+  dnf install -y \
     subversion \
   && \
   #
   # SlicerJupyter dependencies
   #
-  yum install -y \
+  dnf install -y \
     libuuid-devel \
   && \
   #
   # SlicerIMSTK dependencies
   #
-  yum install -y \
+  dnf install -y \
     libusbx-devel \
   && \
   #
   # Download and install Qt: new Qt installer 4.0 CLI interface
   #
   cd /usr/src && \
-  curl -LO http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run && \
-  chmod u+x qt-unified-linux-x64-online.run && \
+  INSTALLER=qt-online-installer-linux-x64-online.run && \
+  curl -LO https://download.qt.io/official_releases/online_installers/${INSTALLER} && \
+  chmod u+x ${INSTALLER} && \
   # See CLI parameters here: https://wiki.qt.io/Online_Installer_4.x
-  ./qt-unified-linux-x64-online.run \
+  ./${INSTALLER} \
     install \
       qt.qt5.5152.gcc_64 \
       qt.qt5.5152.qtscript \
@@ -137,7 +130,8 @@ RUN \
   #
   # Cleanup
   #
-  yum clean all
+  dnf clean all && \
+  rm -rf /var/cache/dnf
 
 #
 # (1) Add Qt root directory to the PATH. This allows CMake command
@@ -149,19 +143,4 @@ RUN \
 ENV PATH=/opt/qt/5.15.2/gcc_64/:${PATH} \
     Qt5_DIR=/opt/qt/5.15.2/gcc_64/lib/cmake/Qt5
 
-#Copy in new entrypoint
-COPY entrypoint.sh /dockcross/
-
-# Build-time metadata as defined at http://label-schema.org
-ARG BUILD_DATE
-ARG IMAGE
-ARG VCS_REF
-ARG VCS_URL
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name=$IMAGE \
-      org.label-schema.description="Base image for slicer/slicer-builds-deps and slicer/slicer-build" \
-      org.label-schema.url="http://www.slicer.org" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url=$VCS_URL \
-      org.label-schema.schema-version="1.0" \
-      maintainer="3D Slicer Community <slicer-devel@bwh.harvard.edu>"
+#include "common.label-and-env"

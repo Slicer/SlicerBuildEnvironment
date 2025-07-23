@@ -1,0 +1,6 @@
+ENV DISPLAY=:99
+ENV MESA_GL_VERSION_OVERRIDE=3.2
+
+# The "pre_exec.sh" script is executed by the "entrypoint.sh" script
+# provided by the "dockbuild" base image
+COPY imagefiles/pre_exec.sh /dockcross/

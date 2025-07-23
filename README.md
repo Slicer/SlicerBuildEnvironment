@@ -15,10 +15,8 @@ available build environment.
     SlicerBuildEnvironment
       |
       |--- Docker
-              |--- qt4-centos5
-              |          |--- Dockerfile
               |
-              |--- qt4-ubuntu1004
+              |--- qt5-almalinux8-gcc14
               |          |--- Dockerfile
               |
               |--- qt5-centos7
@@ -29,12 +27,44 @@ available build environment.
 
 ## Docker-based Environments
 
-Each sub-directory (e.g `qt5-centos7`) contains a `Dockerfile` allowing
+Each sub-directory (e.g `qt5-almalinux8-gcc14`) contains a `Dockerfile` allowing
 to generate a **reusable** build environment (or docker image). That
 build environment includes a version of qt (e.g `qt5`) and is based on a
-given operating system (e.g `centos5`).
+given operating system (e.g `almalinux8`).
 
 ### Supported build environments
+
+#### slicer/buildenv-qt5-centos7:slicer-5.8
+
+[![buildenv-qt5-centos7-slicer-5.8](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-5.8)](https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-5.8/images/sha256-b21b2cc92cfc11befa7a1d25b9b960ac36b60cda228ffd3101d240034815c539)
+Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
+
+#### slicer/buildenv-qt5-centos7:latest
+
+[![buildenv-qt5-centos7-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7)](https://hub.docker.com/r/slicer/buildenv-qt5-centos7/tags)
+Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
+
+#### slicer/buildenv-qt5-almalinux8-gcc14:latest
+
+[![buildenv-qt5-almalinux8-gcc14-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-almalinux8-gcc14)](https://hub.docker.com/r/slicer/buildenv-qt5-almalinux8-gcc14/tags)
+Build environment based on AlmaLinux 8 and including Qt 5.15.2, GCC 14, CMake 3.31.8
+
+### Deprecated build environments
+
+#### slicer/buildenv-qt4-ubuntu1004:latest
+
+[![buildenv-qt4-ubuntu1004-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt4-ubuntu1004/latest)](https://hub.docker.com/layers/slicer/buildenv-qt4-ubuntu1004/latest/images/sha256-ac7bd0b76a7bb2c071328488474a3cc7770715588f911617d1040c98d0e161db)
+Build environment based on Ubuntu 10.04 and including Qt 4.8.6, GCC 4, CMake 3.11.0
+
+#### slicer/buildenv-qt4-centos5:latest
+
+[![buildenv-qt4-centos5-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt4-centos5/latest)](https://hub.docker.com/layers/slicer/buildenv-qt4-centos5/latest/images/sha256-a87410f2783e50d6ad963ff8d9b26ece86488c725666fb90d7cffea4b013ac07)
+Build environment based on Centos5 and including Qt 4.8.7, GCC 4, CMake 3.11.0
+
+#### slicer/buildenv-qt5-centos7:slicer-4.10
+
+[![buildenv-qt5-centos7-slicer-4.10](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.10)](https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.10/images/sha256-211f514f00e83bc68f967b10f1727af0c8a8f98d0b8334a376ca2c3ef4e17a18?context=explore)
+Build environment based on Centos7 and including Qt 5.11.2, GCC 5, CMake 3.12.1
 
 #### slicer/buildenv-qt5-centos7:slicer-4.11-2018.10.17
 
@@ -83,84 +113,6 @@ Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
 
 [![buildenv-qt5-centos7-slicer-5.6](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-5.6)](https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-5.6/images/sha256-b21b2cc92cfc11befa7a1d25b9b960ac36b60cda228ffd3101d240034815c539)
 Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
-
-#### slicer/buildenv-qt5-centos7:slicer-5.8
-
-[![buildenv-qt5-centos7-slicer-5.8](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-5.8)](https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-5.8/images/sha256-b21b2cc92cfc11befa7a1d25b9b960ac36b60cda228ffd3101d240034815c539)
-Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
-
-#### slicer/buildenv-qt5-centos7:latest
-
-[![buildenv-qt5-centos7-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7)](https://hub.docker.com/r/slicer/buildenv-qt5-centos7/tags)
-Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
-
-### Deprecated build environments
-
-#### slicer/buildenv-qt4-ubuntu1004:latest
-
-[![buildenv-qt4-ubuntu1004-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt4-ubuntu1004/latest)](https://hub.docker.com/layers/slicer/buildenv-qt4-ubuntu1004/latest/images/sha256-ac7bd0b76a7bb2c071328488474a3cc7770715588f911617d1040c98d0e161db)
-Build environment based on Ubuntu 10.04 and including Qt 4.8.6, GCC 4, CMake 3.11.0
-
-#### slicer/buildenv-qt4-centos5:latest
-
-[![buildenv-qt4-centos5-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt4-centos5/latest)](https://hub.docker.com/layers/slicer/buildenv-qt4-centos5/latest/images/sha256-a87410f2783e50d6ad963ff8d9b26ece86488c725666fb90d7cffea4b013ac07)
-Build environment based on Centos5 and including Qt 4.8.7, GCC 4, CMake 3.11.0
-
-#### slicer/buildenv-qt5-centos7:slicer-4.10
-
-[![buildenv-qt5-centos7-slicer-4.10](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7/slicer-4.10)](https://hub.docker.com/layers/slicer/buildenv-qt5-centos7/slicer-4.10/images/sha256-211f514f00e83bc68f967b10f1727af0c8a8f98d0b8334a376ca2c3ef4e17a18?context=explore)
-Build environment based on Centos7 and including Qt 5.11.2, GCC 5, CMake 3.12.1
-
-### Visual Overview
-
-```mermaid
-graph TD;
-subgraph library[Base image]
-  centos5;
-  ubuntu1004;
-  centos7-gcc5[centos7];
-  centos7-gcc7[centos7];
-end
-subgraph dockbuild[Dockbuild image]
-  db-centos5[centos5-devtoolset2-gcc4];
-  db-ubuntu1004[ubuntu1004-gcc4]
-  db-centos7-gcc5[centos7-devtoolset4-gcc5]
-  db-centos7-gcc7[centos7-devtoolset7-gcc7]
-end
-subgraph slicer[SlicerBuildEnvironment image]
-  buildenv-qt4-centos5;
-  buildenv-qt4-ubuntu1004;
-  buildenv-qt5-centos7-gcc5["...
-    buildenv-qt5-centos7:slicer-4.13-2021.10.07"];
-  buildenv-qt5-centos7-gcc7["buildenv-qt5-centos7:slicer-4.13-2022.01.20
-    buildenv-qt5-centos7:slicer-5.0
-    buildenv-qt5-centos7:slicer-5.2
-    buildenv-qt5-centos7:latest"];
-end
-centos5 --> db-centos5;
-db-centos5 --> buildenv-qt4-centos5;
-
-ubuntu1004 --> db-ubuntu1004;
-db-ubuntu1004 --> buildenv-qt4-ubuntu1004;
-
-centos7-gcc5 --> db-centos7-gcc5;
-db-centos7-gcc5 --> buildenv-qt5-centos7-gcc5;
-
-centos7-gcc7 --> db-centos7-gcc7;
-db-centos7-gcc7 --> buildenv-qt5-centos7-gcc7;
-
-classDef dep stroke-dasharray: 5 5;
-class centos5,db-centos5 dep;
-class ubuntu1004,db-ubuntu1004 dep;
-class centos7-gcc5,db-centos7-gcc5 dep;
-class centos7-gcc7,db-centos7-gcc7 dep;
-
-classDef builenv fill:#0B7CBC
-class buildenv-qt4-centos5 builenv;
-class buildenv-qt4-ubuntu1004 builenv;
-class buildenv-qt5-centos7-gcc5 builenv;
-class buildenv-qt5-centos7-gcc7 builenv;
-```
 
 ### dockbuild
 
