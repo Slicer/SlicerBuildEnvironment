@@ -44,6 +44,11 @@ Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
 [![buildenv-qt5-centos7-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-centos7)](https://hub.docker.com/r/slicer/buildenv-qt5-centos7/tags)
 Build environment based on Centos7 and including Qt 5.15.2, GCC 7, CMake 3.22.1
 
+#### slicer/buildenv-qt5-almalinux8-gcc14:5.10
+
+[![buildenv-qt5-almalinux8-gcc14-slicer-5.10](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-almalinux8-gcc14/slicer-5.10)](https://hub.docker.com/layers/slicer/buildenv-qt5-almalinux8-gcc14/slicer-5.10/images/sha256-20a2fcc4cdfec90c02c659322e92514075b846afa3c5ccddbc80b82a2d475f2c)
+Build environment based on AlmaLinux 8 and including Qt 5.15.2, GCC 14, CMake 3.31.8
+
 #### slicer/buildenv-qt5-almalinux8-gcc14:latest
 
 [![buildenv-qt5-almalinux8-gcc14-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-almalinux8-gcc14)](https://hub.docker.com/r/slicer/buildenv-qt5-almalinux8-gcc14/tags)
