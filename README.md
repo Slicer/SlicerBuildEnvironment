@@ -296,6 +296,8 @@ The following steps will:
 
 ### Tagging a build environment image
 
+_These commands assume you have cloned https://github.com/Slicer/SlicerBuildEnvironment_
+
 1.  Choose a tag (e.g `slicer-X.Y`)
 
     ```bash
@@ -305,10 +307,14 @@ The following steps will:
 2.  Update `Docker/Makefile` with the chosen tag
 
     ```bash
+    cd SlicerBuildEnvironment
+
     sed -i -E "s/^TAG = .+$/TAG = ${TAG}/g" Docker/Makefile
     ```
 
-2.  Add an entry in `README.rst` referencing the chosen tag
+    _On macOS with BSD `sed`, use `sed -i '' -E ...`._
+
+2.  Add an entry in `README.md` referencing the chosen tag
 
     > Since the image has not yet been published, specify `sha256-UNKNOWN`
     > as image hash.
@@ -316,7 +322,7 @@ The following steps will:
 3.  Commit the changes
 
     ```bash
-    git add README.rst Docker/Makefile
+    git add README.md Docker/Makefile
     git commit -m "Set TAG to ${TAG}"
     ```
     
@@ -328,7 +334,7 @@ The following steps will:
     make <name-of-image>.push
     ```
     
-5.  Update `Docker/Makefile` with the "latest" tag, update `README.rst`
+5.  Update `Docker/Makefile` with the "latest" tag, update `README.md`
     replacing `sha256-UNKNOWN` with expected value.
 
     ```bash
@@ -338,6 +344,6 @@ The following steps will:
 6.  Commit the changes
 
     ```bash
-    git add README.rst Docker/Makefile
+    git add README.md Docker/Makefile
     git commit -m "Set TAG to latest"
     ```
