@@ -91,9 +91,9 @@ dnf install -y\
   # See CLI parameters here: https://wiki.qt.io/Online_Installer_4.x
   ./${INSTALLER} \
     install \
-      qt.qt6.680.linux_gcc_64 \
-      qt.qt6.680.addons.qt5compat.linux_gcc_64 \
-      extensions.qtwebengine.680.linux_gcc_64 \
+      qt.qt6.6101.linux_gcc_64 \
+      qt.qt6.6101.addons.qt5compat.linux_gcc_64 \
+      extensions.qtwebengine.6101.linux_gcc_64 \
     --root /opt/qt \
     --email ${QT_ACCOUNT_LOGIN} \
     --pw ${QT_ACCOUNT_PASSWORD} \
@@ -108,7 +108,7 @@ dnf install -y\
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
   find /opt/qt -type f -name "*.debug" -delete && \
-  find /opt/qt/6.8.0/gcc_64/bin -type f -executable -exec strip {} \; && \
+  find /opt/qt/6.10.1/gcc_64/bin -type f -executable -exec strip {} \; && \
   rm -rf \
     /opt/qt/dist \
     /opt/qt/Docs \
