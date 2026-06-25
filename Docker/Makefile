@@ -20,7 +20,8 @@ ORG = slicer
 
 IMAGES_WITH_CREDENTIALS = \
   qt5-centos7 \
-  qt5-almalinux8-gcc14
+  qt5-almalinux8-gcc14 \
+  qt6-almalinux8-gcc14
 IMAGES_WITHOUT_CREDENTIALS =
 
 # These images are built using the "build implicit rule"
