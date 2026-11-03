@@ -1,5 +1,5 @@
 ARG VERSION=latest
-FROM dockbuild/almalinux8-devtoolset14-gcc14:${VERSION}
+FROM dockbuild/almalinux9-devtoolset14-gcc14:${VERSION}
 
 LABEL maintainer="3D Slicer Community <slicer-devel@bwh.harvard.edu>"
 
@@ -66,7 +66,11 @@ dnf install -y\
   #
   # Slicer dependencies
   #
+  # * perl provides all core modules (e.g FindBin, IPC::Cmd) required to configure OpenSSL.
+  #   On AlmaLinux 9, perl-interpreter only provides a minimal set of modules.
+  #
   dnf install -y \
+    perl \
     subversion \
   && \
   #
@@ -91,9 +95,13 @@ dnf install -y\
   # See CLI parameters here: https://wiki.qt.io/Online_Installer_4.x
   ./${INSTALLER} \
     install \
-      qt.qt6.6101.linux_gcc_64 \
-      qt.qt6.6101.addons.qt5compat.linux_gcc_64 \
-      extensions.qtwebengine.6101.linux_gcc_64 \
+      qt.qt6.6112.linux_gcc_64 \
+      qt.qt6.6112.addons.qt5compat \
+      qt.qt6.6112.addons.qtmultimedia \
+      qt.qt6.6112.addons.qtpositioning \
+      qt.qt6.6112.addons.qtscxml \
+      qt.qt6.6112.addons.qtwebchannel \
+      extensions.qtwebengine.6112.linux_gcc_64 \
     --root /opt/qt \
     --email ${QT_ACCOUNT_LOGIN} \
     --pw ${QT_ACCOUNT_PASSWORD} \
@@ -103,12 +111,21 @@ dnf install -y\
     --accept-obligations \
     --confirm-command \
     --auto-answer telemetry-question=No,AssociateCommonFiletypes=No,installationErrorWithCancel=Ignore,OverwriteTargetDirectory=No &&\
-  rm -f qt-unified-linux-x64-online.run && \
+  rm -f ${INSTALLER} && \
+  #
+  # Check that the Qt modules required by Slicer are installed. The installer is run
+  # with "installationErrorWithCancel=Ignore" and does not fail if a component cannot
+  # be selected.
+  #
+  for module in Core5Compat Multimedia MultimediaWidgets Positioning StateMachine WebChannel WebEngineCore WebEngineWidgets; do \
+    test -d /opt/qt/6.11.2/gcc_64/lib/cmake/Qt6${module} || { echo "error: Qt6${module} is not installed"; exit 1; }; \
+  done && \
+  #
   # Cleanup
   #
   find /opt/qt -maxdepth 1 -type f -exec rm -rf "{}" \; && \
   find /opt/qt -type f -name "*.debug" -delete && \
-  find /opt/qt/6.10.1/gcc_64/bin -type f -executable -exec strip {} \; && \
+  find /opt/qt/6.11.2/gcc_64/bin -type f -executable -exec strip {} \; && \
   rm -rf \
     /opt/qt/dist \
     /opt/qt/Docs \
@@ -123,12 +140,12 @@ dnf install -y\
 
 #
 # (1) Add Qt root directory to the PATH. This allows CMake command
-#     'find_package(Qt5 REQUIRED)` to succeed.
+#     'find_package(Qt6 REQUIRED)` to succeed.
 #
-# (2) Set env. variable Qt5_DIR to support configuring project
-#     by explicitly passing -DQt5_DIR:PATH=${Qt5_DIR}
+# (2) Set env. variable Qt6_DIR to support configuring project
+#     by explicitly passing -DQt6_DIR:PATH=${Qt6_DIR}
 #
-ENV PATH=/opt/qt/6.8.0/gcc_64/:${PATH} \
-    Qt6_DIR=/opt/qt/6.8.0/gcc_64/lib/cmake/Qt6
+ENV PATH=/opt/qt/6.11.2/gcc_64/:${PATH} \
+    Qt6_DIR=/opt/qt/6.11.2/gcc_64/lib/cmake/Qt6
 
 #include "common.label-and-env"

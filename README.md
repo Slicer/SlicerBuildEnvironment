@@ -22,6 +22,9 @@ available build environment.
               |--- qt5-centos7
               |          |--- Dockerfile
               |
+              |--- qt6-almalinux9-gcc14
+              |          |--- Dockerfile
+              |
               |--- Makefile
 ```
 
@@ -53,6 +56,11 @@ Build environment based on AlmaLinux 8 and including Qt 5.15.2, GCC 14, CMake 3.
 
 [![buildenv-qt5-almalinux8-gcc14-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt5-almalinux8-gcc14)](https://hub.docker.com/r/slicer/buildenv-qt5-almalinux8-gcc14/tags)
 Build environment based on AlmaLinux 8 and including Qt 5.15.2, GCC 14, CMake 3.31.8
+
+#### slicer/buildenv-qt6-almalinux9-gcc14:latest
+
+[![buildenv-qt6-almalinux9-gcc14-latest](https://img.shields.io/docker/image-size/slicer/buildenv-qt6-almalinux9-gcc14)](https://hub.docker.com/r/slicer/buildenv-qt6-almalinux9-gcc14/tags)
+Build environment based on AlmaLinux 9 and including Qt 6.11.2, GCC 14, CMake 3.31.8
 
 ### Deprecated build environments
 
